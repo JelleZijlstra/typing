@@ -1,0 +1,14 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 23: Expected 1 errors
+Line 24: Expected 1 errors
+Line 35: Expected 1 errors
+Line 40: Expected 1 errors
+Line 13: Unexpected errors ['typeddicts_usage.py:13:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`']
+Line 20: Unexpected errors ['typeddicts_usage.py:20:14: Argument to function `record_movie` is incorrect: Expected `Movie`, found `dict[Unknown, Unknown]`']
+"""
+output = """
+error[invalid-assignment] typeddicts_usage.py:13:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+error[invalid-argument-type] typeddicts_usage.py:20:14: Argument to function `record_movie` is incorrect: Expected `Movie`, found `dict[Unknown, Unknown]`
+error[invalid-assignment] typeddicts_usage.py:28:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+"""

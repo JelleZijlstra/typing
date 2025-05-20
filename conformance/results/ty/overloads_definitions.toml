@@ -1,0 +1,40 @@
+conformance_automated = "Fail"
+errors_diff = """
+Lines 15, 16: Expected error (tag 'func1')
+Lines 27, 28: Expected error (tag 'func2')
+Lines 58, 59: Expected error (tag 'not_abstract')
+Lines 71, 73, 78, 81: Expected error (tag 'func5')
+Lines 121, 123, 127: Expected error (tag 'invalid_final')
+Lines 135, 136, 137, 141, 142: Expected error (tag 'invalid_final_2')
+Lines 220, 221, 222, 225, 226: Expected error (tag 'override_impl')
+Line 20: Unexpected errors ['overloads_definitions.py:20:5: Overloaded function `func1` requires at least two overloads']
+Line 33: Unexpected errors ['overloads_definitions.py:33:5: Overloaded non-stub function `func2` must have an implementation']
+Line 63: Unexpected errors ['overloads_definitions.py:63:9: Overloaded non-stub function `not_abstract` must have an implementation']
+Line 117: Unexpected errors ['overloads_definitions.py:117:45: Function can implicitly return `None`, which is not assignable to return type `int | str`']
+Line 130: Unexpected errors ['overloads_definitions.py:130:9: `@final` decorator should be applied only to the overload implementation', 'overloads_definitions.py:130:46: Function can implicitly return `None`, which is not assignable to return type `int | str`']
+Line 146: Unexpected errors ['overloads_definitions.py:146:9: `@final` decorator should be applied only to the overload implementation', 'overloads_definitions.py:146:9: `@final` decorator should be applied only to the overload implementation', 'overloads_definitions.py:146:48: Function can implicitly return `None`, which is not assignable to return type `int | str`']
+Line 159: Unexpected errors ['overloads_definitions.py:159:46: Function can implicitly return `None`, which is not assignable to return type `int | str`']
+Line 167: Unexpected errors ['overloads_definitions.py:167:44: Function can implicitly return `None`, which is not assignable to return type `int | str`']
+Line 215: Unexpected errors ['overloads_definitions.py:215:46: Function can implicitly return `None`, which is not assignable to return type `int | str`']
+Line 229: Unexpected errors ['overloads_definitions.py:229:9: `@override` decorator should be applied only to the overload implementation', 'overloads_definitions.py:229:9: `@override` decorator should be applied only to the overload implementation', 'overloads_definitions.py:229:44: Function can implicitly return `None`, which is not assignable to return type `int | str`']
+"""
+output = """
+error[invalid-overload] overloads_definitions.py:20:5: Overloaded function `func1` requires at least two overloads
+error[invalid-overload] overloads_definitions.py:33:5: Overloaded non-stub function `func2` must have an implementation
+error[invalid-overload] overloads_definitions.py:63:9: Overloaded non-stub function `not_abstract` must have an implementation
+error[invalid-overload] overloads_definitions.py:94:9: Overloaded function `func6` does not use the `@classmethod` decorator consistently
+error[invalid-return-type] overloads_definitions.py:117:45: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-overload] overloads_definitions.py:130:9: `@final` decorator should be applied only to the overload implementation
+error[invalid-return-type] overloads_definitions.py:130:46: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-overload] overloads_definitions.py:146:9: `@final` decorator should be applied only to the overload implementation
+error[invalid-overload] overloads_definitions.py:146:9: `@final` decorator should be applied only to the overload implementation
+error[invalid-return-type] overloads_definitions.py:146:48: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-return-type] overloads_definitions.py:159:46: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-return-type] overloads_definitions.py:167:44: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-return-type] overloads_definitions.py:183:10: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-return-type] overloads_definitions.py:198:45: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-return-type] overloads_definitions.py:215:46: Function can implicitly return `None`, which is not assignable to return type `int | str`
+error[invalid-overload] overloads_definitions.py:229:9: `@override` decorator should be applied only to the overload implementation
+error[invalid-overload] overloads_definitions.py:229:9: `@override` decorator should be applied only to the overload implementation
+error[invalid-return-type] overloads_definitions.py:229:44: Function can implicitly return `None`, which is not assignable to return type `int | str`
+"""

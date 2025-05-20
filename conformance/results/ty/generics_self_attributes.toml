@@ -1,0 +1,11 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 29: Unexpected errors ['generics_self_attributes.py:29:5: Object of type `OrdinalLinkedList` is not assignable to attribute `next` of type `Self | None`', 'generics_self_attributes.py:29:33: Argument is incorrect: Expected `T`, found `Literal[3]`']
+"""
+output = """
+error[invalid-argument-type] generics_self_attributes.py:26:24: Argument is incorrect: Expected `T`, found `Literal[1]`
+error[invalid-argument-type] generics_self_attributes.py:26:33: Argument is incorrect: Expected `Self | None`, found `LinkedList[int]`
+error[invalid-assignment] generics_self_attributes.py:29:5: Object of type `OrdinalLinkedList` is not assignable to attribute `next` of type `Self | None`
+error[invalid-argument-type] generics_self_attributes.py:29:33: Argument is incorrect: Expected `T`, found `Literal[3]`
+error[invalid-assignment] generics_self_attributes.py:32:5: Object of type `LinkedList[int]` is not assignable to attribute `next` of type `Self | None`
+"""

@@ -1,0 +1,32 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 31: Expected 1 errors
+Line 39: Expected 1 errors
+Line 56: Expected 1 errors
+Line 62: Expected 1 errors
+Line 67: Expected 1 errors
+Line 77: Expected 1 errors
+Line 79: Expected 1 errors
+Line 82: Expected 1 errors
+Line 84: Expected 1 errors
+Lines 51, 52: Expected error (tag 'TA14')
+Lines 88, 89: Expected error (tag 'RTA6')
+"""
+output = """
+error[unresolved-attribute] aliases_type_statement.py:17:1: Type `typing.TypeAliasType` has no attribute `bit_count`
+error[call-non-callable] aliases_type_statement.py:19:1: Object of type `typing.TypeAliasType` is not callable
+error[unresolved-attribute] aliases_type_statement.py:23:7: Type `typing.TypeAliasType` has no attribute `other_attrib`
+error[invalid-base] aliases_type_statement.py:26:18: Invalid class base with type `typing.TypeAliasType` (all bases must be a class, `Any`, `Unknown` or `Todo`)
+error[invalid-type-form] aliases_type_statement.py:37:22: Function calls are not allowed in type expressions
+error[invalid-type-form] aliases_type_statement.py:38:22: List literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_type_statement.py:40:22: List comprehensions are not allowed in type expressions
+error[invalid-type-form] aliases_type_statement.py:41:22: Dict literals are not allowed in type expressions
+error[invalid-type-form] aliases_type_statement.py:42:22: Function calls are not allowed in type expressions
+error[invalid-type-form] aliases_type_statement.py:43:28: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_type_statement.py:44:22: `if` expressions are not allowed in type expressions
+error[invalid-type-form] aliases_type_statement.py:45:22: Variable of type `Literal[1]` is not allowed in a type expression
+error[invalid-type-form] aliases_type_statement.py:46:23: Boolean literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_type_statement.py:47:23: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_type_statement.py:48:23: Boolean operations are not allowed in type expressions
+error[fstring-type-annotation] aliases_type_statement.py:49:23: Type expressions cannot use f-strings
+"""

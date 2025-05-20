@@ -1,0 +1,13 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 79: Expected 1 errors
+Line 80: Expected 1 errors
+Line 102: Expected 1 errors
+Line 103: Expected 1 errors
+"""
+output = """
+error[call-non-callable] protocols_subtyping.py:16:6: Cannot instantiate class `Proto1`: This call will raise `TypeError` at runtime
+error[missing-argument] protocols_subtyping.py:16:6: No argument provided for required parameter `self` of function `__init__`
+error[invalid-assignment] protocols_subtyping.py:38:5: Object of type `Proto2` is not assignable to `Concrete2`
+error[invalid-assignment] protocols_subtyping.py:55:5: Object of type `Proto2` is not assignable to `Proto3`
+"""

@@ -1,0 +1,26 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 44: Expected 1 errors
+Line 54: Expected 1 errors
+Line 55: Expected 1 errors
+Line 60: Expected 1 errors
+Line 61: Expected 1 errors
+Line 13: Unexpected errors ['generics_paramspec_specialization.py:13:14: `ParamSpec` is not a valid argument to `typing.Generic`']
+Line 14: Unexpected errors ['generics_paramspec_specialization.py:14:17: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 18: Unexpected errors ['generics_paramspec_specialization.py:18:29: `ParamSpec` is not a valid argument to `typing.Generic`']
+Line 19: Unexpected errors ['generics_paramspec_specialization.py:19:18: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 20: Unexpected errors ['generics_paramspec_specialization.py:20:18: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 48: Unexpected errors ['generics_paramspec_specialization.py:48:14: `ParamSpec` is not a valid argument to `typing.Generic`']
+Line 49: Unexpected errors ['generics_paramspec_specialization.py:49:17: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 52: Unexpected errors ['generics_paramspec_specialization.py:52:22: List literals are not allowed in this context in a type expression']
+"""
+output = """
+error[invalid-argument-type] generics_paramspec_specialization.py:13:14: `ParamSpec` is not a valid argument to `typing.Generic`
+error[invalid-type-form] generics_paramspec_specialization.py:14:17: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-argument-type] generics_paramspec_specialization.py:18:29: `ParamSpec` is not a valid argument to `typing.Generic`
+error[invalid-type-form] generics_paramspec_specialization.py:19:18: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_specialization.py:20:18: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-argument-type] generics_paramspec_specialization.py:48:14: `ParamSpec` is not a valid argument to `typing.Generic`
+error[invalid-type-form] generics_paramspec_specialization.py:49:17: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_specialization.py:52:22: List literals are not allowed in this context in a type expression
+"""

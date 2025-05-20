@@ -1,0 +1,37 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 145: Expected 1 errors
+Line 23: Unexpected errors ['constructors_call_new.py:23:1: Argument does not have asserted type `Class1[int]`']
+Line 24: Unexpected errors ['constructors_call_new.py:24:1: Argument does not have asserted type `Class1[int | float]`']
+Line 35: Unexpected errors ['constructors_call_new.py:35:1: Argument does not have asserted type `Class2[int]`']
+Line 36: Unexpected errors ['constructors_call_new.py:36:1: Argument does not have asserted type `Class2[str]`']
+Line 49: Unexpected errors ['constructors_call_new.py:49:1: Argument does not have asserted type `int`', 'constructors_call_new.py:49:13: No argument provided for required parameter `x` of bound method `__init__`']
+Line 64: Unexpected errors ['constructors_call_new.py:64:1: Argument does not have asserted type `Class4 | Any`', 'constructors_call_new.py:64:13: No argument provided for required parameter `x` of bound method `__init__`']
+Line 76: Unexpected errors ['constructors_call_new.py:76:5: Argument does not have asserted type `Never`', 'constructors_call_new.py:76:17: No argument provided for required parameter `x` of bound method `__init__`']
+Line 89: Unexpected errors ['constructors_call_new.py:89:1: Argument does not have asserted type `int | Class6`', 'constructors_call_new.py:89:13: No argument provided for required parameter `x` of bound method `__init__`']
+Line 113: Unexpected errors ['constructors_call_new.py:113:42: Function can implicitly return `None`, which is not assignable to return type `Class8[list[T]]`']
+Line 116: Unexpected errors ['constructors_call_new.py:116:1: Argument does not have asserted type `Class8[list[int]]`']
+Line 117: Unexpected errors ['constructors_call_new.py:117:1: Argument does not have asserted type `Class8[list[str]]`']
+Line 125: Unexpected errors ['constructors_call_new.py:125:42: Function can implicitly return `None`, which is not assignable to return type `Self`']
+Line 140: Unexpected errors ['constructors_call_new.py:140:47: Function can implicitly return `None`, which is not assignable to return type `Class11[int]`']
+"""
+output = """
+error[invalid-argument-type] constructors_call_new.py:21:13: Argument to function `__new__` is incorrect: Expected `int`, found `float`
+error[type-assertion-failure] constructors_call_new.py:23:1: Argument does not have asserted type `Class1[int]`
+error[type-assertion-failure] constructors_call_new.py:24:1: Argument does not have asserted type `Class1[int | float]`
+error[type-assertion-failure] constructors_call_new.py:35:1: Argument does not have asserted type `Class2[int]`
+error[type-assertion-failure] constructors_call_new.py:36:1: Argument does not have asserted type `Class2[str]`
+error[type-assertion-failure] constructors_call_new.py:49:1: Argument does not have asserted type `int`
+error[missing-argument] constructors_call_new.py:49:13: No argument provided for required parameter `x` of bound method `__init__`
+error[type-assertion-failure] constructors_call_new.py:64:1: Argument does not have asserted type `Class4 | Any`
+error[missing-argument] constructors_call_new.py:64:13: No argument provided for required parameter `x` of bound method `__init__`
+error[type-assertion-failure] constructors_call_new.py:76:5: Argument does not have asserted type `Never`
+error[missing-argument] constructors_call_new.py:76:17: No argument provided for required parameter `x` of bound method `__init__`
+error[type-assertion-failure] constructors_call_new.py:89:1: Argument does not have asserted type `int | Class6`
+error[missing-argument] constructors_call_new.py:89:13: No argument provided for required parameter `x` of bound method `__init__`
+error[invalid-return-type] constructors_call_new.py:113:42: Function can implicitly return `None`, which is not assignable to return type `Class8[list[T]]`
+error[type-assertion-failure] constructors_call_new.py:116:1: Argument does not have asserted type `Class8[list[int]]`
+error[type-assertion-failure] constructors_call_new.py:117:1: Argument does not have asserted type `Class8[list[str]]`
+error[invalid-return-type] constructors_call_new.py:125:42: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[invalid-return-type] constructors_call_new.py:140:47: Function can implicitly return `None`, which is not assignable to return type `Class11[int]`
+"""

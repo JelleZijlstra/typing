@@ -1,0 +1,26 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 30: Expected 1 errors
+Line 67: Expected 1 errors
+Line 115: Expected 1 errors
+Line 116: Expected 1 errors
+Line 117: Expected 1 errors
+Line 157: Expected 1 errors
+Line 158: Expected 1 errors
+Line 159: Expected 1 errors
+Line 160: Expected 1 errors
+Line 218: Expected 1 errors
+Line 285: Expected 1 errors
+Line 286: Expected 1 errors
+Line 287: Expected 1 errors
+Line 288: Expected 1 errors
+Line 289: Expected 1 errors
+Line 339: Expected 1 errors
+Line 340: Expected 1 errors
+Line 341: Expected 1 errors
+"""
+output = """
+error[invalid-assignment] protocols_definition.py:114:1: Object of type `Concrete2_Bad1` is not assignable to `Template2`
+error[invalid-assignment] protocols_definition.py:156:1: Object of type `Concrete3_Bad1` is not assignable to `Template3`
+error[invalid-assignment] protocols_definition.py:219:1: Object of type `Concrete4_Bad2` is not assignable to `Template4`
+"""

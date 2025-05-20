@@ -1,0 +1,22 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 22: Expected 1 errors
+Line 23: Expected 1 errors
+Line 24: Expected 1 errors
+Line 26: Expected 1 errors
+Line 47: Expected 1 errors
+Line 49: Expected 1 errors
+Line 62: Expected 1 errors
+Line 18: Unexpected errors ['typeddicts_operations.py:18:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`']
+Line 58: Unexpected errors ['typeddicts_operations.py:58:1: Object of type `dict[Unknown, Unknown]` is not assignable to `MovieOptional`']
+Line 60: Unexpected errors ['typeddicts_operations.py:60:1: Argument does not have asserted type `str | None`']
+"""
+output = """
+error[invalid-assignment] typeddicts_operations.py:18:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+error[invalid-assignment] typeddicts_operations.py:28:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+error[invalid-assignment] typeddicts_operations.py:29:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+error[invalid-assignment] typeddicts_operations.py:32:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+error[invalid-assignment] typeddicts_operations.py:37:5: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+error[invalid-assignment] typeddicts_operations.py:58:1: Object of type `dict[Unknown, Unknown]` is not assignable to `MovieOptional`
+error[type-assertion-failure] typeddicts_operations.py:60:1: Argument does not have asserted type `str | None`
+"""

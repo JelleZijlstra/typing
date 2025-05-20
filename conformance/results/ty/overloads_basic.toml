@@ -1,0 +1,6 @@
+conformance_automated = "Pass"
+errors_diff = """
+"""
+output = """
+error[call-non-callable] overloads_basic.py:39:1: Method `__getitem__` of type `Overload[(__i: int) -> int, (__s: slice[Any, Any, Any]) -> bytes]` is not callable on object of type `Bytes`
+"""

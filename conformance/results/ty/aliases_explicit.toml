@@ -1,0 +1,56 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 67: Expected 1 errors
+Line 68: Expected 1 errors
+Line 69: Expected 1 errors
+Line 70: Expected 1 errors
+Line 71: Expected 1 errors
+Line 79: Expected 1 errors
+Line 80: Expected 1 errors
+Line 81: Expected 1 errors
+Line 82: Expected 1 errors
+Line 83: Expected 1 errors
+Line 84: Expected 1 errors
+Line 85: Expected 1 errors
+Line 86: Expected 1 errors
+Line 87: Expected 1 errors
+Line 88: Expected 1 errors
+Line 89: Expected 1 errors
+Line 90: Expected 1 errors
+Line 91: Expected 1 errors
+Line 100: Expected 1 errors
+Line 102: Expected 1 errors
+Line 45: Unexpected errors ['aliases_explicit.py:45:10: Variable of type `Literal["int | str"]` is not allowed in a type expression']
+Line 49: Unexpected errors ['aliases_explicit.py:49:5: Argument does not have asserted type `int | str`']
+Line 50: Unexpected errors ['aliases_explicit.py:50:5: Argument does not have asserted type `int | None`']
+Line 51: Unexpected errors ['aliases_explicit.py:51:5: Argument does not have asserted type `list[int | None]`']
+Line 52: Unexpected errors ['aliases_explicit.py:52:5: Argument does not have asserted type `list[int]`']
+Line 53: Unexpected errors ['aliases_explicit.py:53:5: Argument does not have asserted type `tuple[str, ...] | list[str]`']
+Line 54: Unexpected errors ['aliases_explicit.py:54:5: Argument does not have asserted type `tuple[int, int, int, str]`']
+Line 55: Unexpected errors ['aliases_explicit.py:55:5: Argument does not have asserted type `(...) -> int`']
+Line 56: Unexpected errors ['aliases_explicit.py:56:5: Argument does not have asserted type `(int, str, /) -> str`']
+Line 57: Unexpected errors ['aliases_explicit.py:57:5: Argument does not have asserted type `(int, str, str, /) -> None`']
+Line 59: Unexpected errors ['aliases_explicit.py:59:5: Argument does not have asserted type `int | str | None | list[list[int]]`']
+Line 60: Unexpected errors ['aliases_explicit.py:60:5: Argument does not have asserted type `(...) -> None`']
+Line 61: Unexpected errors ['aliases_explicit.py:61:5: Argument does not have asserted type `int | str`']
+Line 63: Unexpected errors ['aliases_explicit.py:63:5: Argument does not have asserted type `Literal[3, 4, 5] | None`']
+Line 98: Unexpected errors ['aliases_explicit.py:98:1: Argument does not have asserted type `list[str]`']
+"""
+output = """
+error[invalid-type-form] aliases_explicit.py:45:10: Variable of type `Literal["int | str"]` is not allowed in a type expression
+error[type-assertion-failure] aliases_explicit.py:49:5: Argument does not have asserted type `int | str`
+error[type-assertion-failure] aliases_explicit.py:50:5: Argument does not have asserted type `int | None`
+error[type-assertion-failure] aliases_explicit.py:51:5: Argument does not have asserted type `list[int | None]`
+error[type-assertion-failure] aliases_explicit.py:52:5: Argument does not have asserted type `list[int]`
+error[type-assertion-failure] aliases_explicit.py:53:5: Argument does not have asserted type `tuple[str, ...] | list[str]`
+error[type-assertion-failure] aliases_explicit.py:54:5: Argument does not have asserted type `tuple[int, int, int, str]`
+error[type-assertion-failure] aliases_explicit.py:55:5: Argument does not have asserted type `(...) -> int`
+error[type-assertion-failure] aliases_explicit.py:56:5: Argument does not have asserted type `(int, str, /) -> str`
+error[type-assertion-failure] aliases_explicit.py:57:5: Argument does not have asserted type `(int, str, str, /) -> None`
+error[type-assertion-failure] aliases_explicit.py:59:5: Argument does not have asserted type `int | str | None | list[list[int]]`
+error[type-assertion-failure] aliases_explicit.py:60:5: Argument does not have asserted type `(...) -> None`
+error[type-assertion-failure] aliases_explicit.py:61:5: Argument does not have asserted type `int | str`
+error[type-assertion-failure] aliases_explicit.py:63:5: Argument does not have asserted type `Literal[3, 4, 5] | None`
+error[type-assertion-failure] aliases_explicit.py:98:1: Argument does not have asserted type `list[str]`
+error[call-non-callable] aliases_explicit.py:101:6: Object of type `UnionType` is not callable
+"""

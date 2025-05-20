@@ -1,0 +1,9 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 22: Unexpected errors ['generics_typevartuple_concat.py:22:13: `@Todo` is not a valid argument to `typing.Generic`']
+Line 52: Unexpected errors ['generics_typevartuple_concat.py:52:1: Argument does not have asserted type `tuple[int, bool, str]`']
+"""
+output = """
+error[invalid-argument-type] generics_typevartuple_concat.py:22:13: `@Todo` is not a valid argument to `typing.Generic`
+error[type-assertion-failure] generics_typevartuple_concat.py:52:1: Argument does not have asserted type `tuple[int, bool, str]`
+"""

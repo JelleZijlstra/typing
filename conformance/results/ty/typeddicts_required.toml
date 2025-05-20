@@ -1,0 +1,27 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 12: Expected 1 errors
+Line 19: Expected 1 errors
+Line 62: Expected 1 errors
+Line 63: Expected 1 errors
+Line 47: Unexpected errors ['typeddicts_required.py:47:1: Object of type `dict[Unknown, Unknown]` is not assignable to `TD3`']
+Line 48: Unexpected errors ['typeddicts_required.py:48:1: Object of type `dict[Unknown, Unknown]` is not assignable to `TD4`']
+Line 49: Unexpected errors ['typeddicts_required.py:49:1: Object of type `dict[Unknown, Unknown]` is not assignable to `TD5`']
+Line 53: Unexpected errors ['typeddicts_required.py:53:1: Object of type `TD4` is not assignable to `TD3`']
+Line 54: Unexpected errors ['typeddicts_required.py:54:1: Object of type `TD5` is not assignable to `TD3`']
+Line 55: Unexpected errors ['typeddicts_required.py:55:1: Object of type `TD3` is not assignable to `TD4`']
+Line 56: Unexpected errors ['typeddicts_required.py:56:1: Object of type `TD5` is not assignable to `TD4`']
+Line 57: Unexpected errors ['typeddicts_required.py:57:1: Object of type `TD3` is not assignable to `TD5`']
+Line 58: Unexpected errors ['typeddicts_required.py:58:1: Object of type `TD4` is not assignable to `TD5`']
+"""
+output = """
+error[invalid-assignment] typeddicts_required.py:47:1: Object of type `dict[Unknown, Unknown]` is not assignable to `TD3`
+error[invalid-assignment] typeddicts_required.py:48:1: Object of type `dict[Unknown, Unknown]` is not assignable to `TD4`
+error[invalid-assignment] typeddicts_required.py:49:1: Object of type `dict[Unknown, Unknown]` is not assignable to `TD5`
+error[invalid-assignment] typeddicts_required.py:53:1: Object of type `TD4` is not assignable to `TD3`
+error[invalid-assignment] typeddicts_required.py:54:1: Object of type `TD5` is not assignable to `TD3`
+error[invalid-assignment] typeddicts_required.py:55:1: Object of type `TD3` is not assignable to `TD4`
+error[invalid-assignment] typeddicts_required.py:56:1: Object of type `TD5` is not assignable to `TD4`
+error[invalid-assignment] typeddicts_required.py:57:1: Object of type `TD3` is not assignable to `TD5`
+error[invalid-assignment] typeddicts_required.py:58:1: Object of type `TD4` is not assignable to `TD5`
+"""

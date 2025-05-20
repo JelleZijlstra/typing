@@ -1,0 +1,25 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 44: Expected 1 errors
+Line 76: Expected 1 errors
+Line 77: Expected 1 errors
+Line 84: Expected 1 errors
+Line 85: Expected 1 errors
+Line 92: Expected 1 errors
+Line 93: Expected 1 errors
+"""
+output = """
+error[invalid-type-form] qualifiers_annotated.py:43:17: List literals are not allowed in this context in a type expression
+error[invalid-type-form] qualifiers_annotated.py:45:17: List comprehensions are not allowed in type expressions
+error[invalid-type-form] qualifiers_annotated.py:46:17: Dict literals are not allowed in type expressions
+error[invalid-type-form] qualifiers_annotated.py:47:17: Function calls are not allowed in type expressions
+error[invalid-type-form] qualifiers_annotated.py:48:23: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] qualifiers_annotated.py:49:17: `if` expressions are not allowed in type expressions
+error[unresolved-reference] qualifiers_annotated.py:50:17: Name `var1` used when not defined
+error[invalid-type-form] qualifiers_annotated.py:51:17: Boolean literals are not allowed in this context in a type expression
+error[invalid-type-form] qualifiers_annotated.py:52:18: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] qualifiers_annotated.py:53:18: Boolean operations are not allowed in type expressions
+error[fstring-type-annotation] qualifiers_annotated.py:54:18: Type expressions cannot use f-strings
+error[invalid-type-form] qualifiers_annotated.py:64:8: Special form `typing.Annotated` expected at least 2 arguments (one type and at least one metadata element)
+error[call-non-callable] qualifiers_annotated.py:91:1: Object of type `typing.Annotated` is not callable
+"""

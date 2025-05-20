@@ -1,0 +1,20 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 90: Expected 1 errors
+"""
+output = """
+error[invalid-type-form] annotations_typeexpr.py:88:9: Function calls are not allowed in type expressions
+error[invalid-type-form] annotations_typeexpr.py:89:9: List literals are not allowed in this context in a type expression
+error[invalid-type-form] annotations_typeexpr.py:91:9: List comprehensions are not allowed in type expressions
+error[invalid-type-form] annotations_typeexpr.py:92:9: Dict literals are not allowed in type expressions
+error[invalid-type-form] annotations_typeexpr.py:93:9: Function calls are not allowed in type expressions
+error[invalid-type-form] annotations_typeexpr.py:94:15: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] annotations_typeexpr.py:95:9: `if` expressions are not allowed in type expressions
+error[invalid-type-form] annotations_typeexpr.py:96:9: Variable of type `Literal[3]` is not allowed in a type expression
+error[invalid-type-form] annotations_typeexpr.py:97:10: Boolean literals are not allowed in this context in a type expression
+error[invalid-type-form] annotations_typeexpr.py:98:10: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] annotations_typeexpr.py:99:10: Unary operations are not allowed in type expressions
+error[invalid-type-form] annotations_typeexpr.py:100:10: Boolean operations are not allowed in type expressions
+error[fstring-type-annotation] annotations_typeexpr.py:101:10: Type expressions cannot use f-strings
+error[invalid-type-form] annotations_typeexpr.py:102:10: Variable of type `<module 'types'>` is not allowed in a type expression
+"""

@@ -1,0 +1,66 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 38: Expected 1 errors
+Line 39: Expected 1 errors
+Line 51: Expected 1 errors
+Line 65: Expected 1 errors
+Line 66: Expected 1 errors
+Line 67: Expected 1 errors
+Line 79: Expected 1 errors
+Line 80: Expected 1 errors
+Line 127: Expected 1 errors
+Line 144: Expected 1 errors
+Line 184: Expected 1 errors
+Line 195: Expected 1 errors
+Line 26: Unexpected errors ['constructors_callable.py:26:35: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`', 'constructors_callable.py:26:54: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 36: Unexpected errors ['constructors_callable.py:36:13: Revealed type: `(...) -> Unknown`']
+Line 37: Unexpected errors ['constructors_callable.py:37:1: Argument does not have asserted type `Class1`']
+Line 49: Unexpected errors ['constructors_callable.py:49:13: Revealed type: `(...) -> Unknown`']
+Line 50: Unexpected errors ['constructors_callable.py:50:1: Argument does not have asserted type `Class2`']
+Line 57: Unexpected errors ['constructors_callable.py:57:42: Function can implicitly return `None`, which is not assignable to return type `Self`']
+Line 63: Unexpected errors ['constructors_callable.py:63:13: Revealed type: `(...) -> Unknown`']
+Line 64: Unexpected errors ['constructors_callable.py:64:1: Argument does not have asserted type `Class3`']
+Line 73: Unexpected errors ['constructors_callable.py:73:33: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 77: Unexpected errors ['constructors_callable.py:77:13: Revealed type: `(...) -> Unknown`']
+Line 78: Unexpected errors ['constructors_callable.py:78:1: Argument does not have asserted type `int`']
+Line 97: Unexpected errors ['constructors_callable.py:97:13: Revealed type: `(...) -> Unknown`']
+Line 100: Unexpected errors ['constructors_callable.py:100:5: Argument does not have asserted type `Never`']
+Line 105: Unexpected errors ['constructors_callable.py:105:5: Argument does not have asserted type `Never`']
+Line 125: Unexpected errors ['constructors_callable.py:125:13: Revealed type: `(...) -> Unknown`']
+Line 126: Unexpected errors ['constructors_callable.py:126:1: Argument does not have asserted type `Class6Proxy`']
+Line 142: Unexpected errors ['constructors_callable.py:142:13: Revealed type: `(...) -> Unknown`']
+Line 162: Unexpected errors ['constructors_callable.py:162:5: Revealed type: `(...) -> Unknown`']
+Line 164: Unexpected errors ['constructors_callable.py:164:1: Argument does not have asserted type `Class7[int]`']
+Line 165: Unexpected errors ['constructors_callable.py:165:1: Argument does not have asserted type `Class7[str]`']
+Line 182: Unexpected errors ['constructors_callable.py:182:13: Revealed type: `(...) -> Unknown`']
+Line 183: Unexpected errors ['constructors_callable.py:183:1: Argument does not have asserted type `Class8[str]`']
+Line 193: Unexpected errors ['constructors_callable.py:193:13: Revealed type: `(...) -> Unknown`']
+Line 194: Unexpected errors ['constructors_callable.py:194:1: Argument does not have asserted type `Class9`']
+"""
+output = """
+error[invalid-type-form] constructors_callable.py:26:35: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] constructors_callable.py:26:54: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+info[revealed-type] constructors_callable.py:36:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:37:1: Argument does not have asserted type `Class1`
+info[revealed-type] constructors_callable.py:49:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:50:1: Argument does not have asserted type `Class2`
+error[invalid-return-type] constructors_callable.py:57:42: Function can implicitly return `None`, which is not assignable to return type `Self`
+info[revealed-type] constructors_callable.py:63:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:64:1: Argument does not have asserted type `Class3`
+error[invalid-return-type] constructors_callable.py:73:33: Function can implicitly return `None`, which is not assignable to return type `int`
+info[revealed-type] constructors_callable.py:77:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:78:1: Argument does not have asserted type `int`
+info[revealed-type] constructors_callable.py:97:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:100:5: Argument does not have asserted type `Never`
+error[type-assertion-failure] constructors_callable.py:105:5: Argument does not have asserted type `Never`
+info[revealed-type] constructors_callable.py:125:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:126:1: Argument does not have asserted type `Class6Proxy`
+info[revealed-type] constructors_callable.py:142:13: Revealed type: `(...) -> Unknown`
+info[revealed-type] constructors_callable.py:162:5: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:164:1: Argument does not have asserted type `Class7[int]`
+error[type-assertion-failure] constructors_callable.py:165:1: Argument does not have asserted type `Class7[str]`
+info[revealed-type] constructors_callable.py:182:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:183:1: Argument does not have asserted type `Class8[str]`
+info[revealed-type] constructors_callable.py:193:13: Revealed type: `(...) -> Unknown`
+error[type-assertion-failure] constructors_callable.py:194:1: Argument does not have asserted type `Class9`
+"""

@@ -388,7 +388,7 @@ class PytypeTypeChecker(TypeChecker):
 class PycroscopeTypeChecker(TypeChecker):
     @property
     def name(self) -> str:
-        return "pycrosscope"
+        return "pycroscope"
 
     def install(self) -> bool:
         run(
@@ -442,7 +442,57 @@ class PycroscopeTypeChecker(TypeChecker):
         return line_to_errors
 
 
+class TyTypeChecker(TypeChecker):
+    @property
+    def name(self) -> str:
+        return "ty"
+
+    def install(self) -> bool:
+        try:
+            # Install the latest version.
+            run(
+                [sys.executable, "-m", "pip", "install", "--upgrade", "ty"],
+                check=True,
+            )
+
+            return True
+        except CalledProcessError:
+            print("Unable to install ty")
+            return False
+
+    def get_version(self) -> str:
+        proc = run([sys.executable, "-m", "ty", "--version"], stdout=PIPE, text=True)
+        return proc.stdout.split()[0]
+
+    def run_tests(self, test_files: Sequence[str]) -> dict[str, str]:
+        command = [sys.executable, "-m", "ty", "check", "--output-format", "concise", *test_files]
+        proc = run(command, stdout=PIPE, text=True, encoding="utf-8")
+        lines = proc.stdout.split("\n")
+
+        # Add results to a dictionary keyed by the file name.
+        results_dict: dict[str, str] = {}
+        for line in lines:
+            if " " not in line and ":" not in line:
+                continue
+            file_name = line.split()[1].split(":")[0].strip()
+            results_dict[file_name] = results_dict.get(file_name, "") + line + "\n"
+
+        return results_dict
+
+    def parse_errors(self, output: Sequence[str]) -> dict[int, list[str]]:
+        # narrowing_typeguard.py:102: error: TypeGuard functions must have a positional argument  [valid-type]
+        line_to_errors: dict[int, list[str]] = {}
+        for line in output:
+            if line.count(":") < 3:
+                continue
+            _, line = line.split(maxsplit=1)
+            _, lineno, _, _ = line.split(":", maxsplit=3)
+            line_to_errors.setdefault(int(lineno), []).append(line)
+        return line_to_errors
+
+
 TYPE_CHECKERS: Sequence[TypeChecker] = (
+    TyTypeChecker(),
     PycroscopeTypeChecker(),
     MypyTypeChecker(),
     PyrightTypeChecker(),

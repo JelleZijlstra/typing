@@ -1,0 +1,37 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 18: Unexpected errors ['typeddicts_type_consistency.py:18:1: Object of type `dict[Unknown, Unknown]` is not assignable to `B1`']
+Line 24: Unexpected errors ['typeddicts_type_consistency.py:24:1: Object of type `B1` is not assignable to `Mapping[str, object]`']
+Line 37: Unexpected errors ['typeddicts_type_consistency.py:37:1: Object of type `dict[Unknown, Unknown]` is not assignable to `B2`']
+Line 61: Unexpected errors ['typeddicts_type_consistency.py:61:1: Object of type `dict[Unknown, Unknown]` is not assignable to `B3`']
+Line 62: Unexpected errors ['typeddicts_type_consistency.py:62:1: Object of type `B3` is not assignable to `A3`']
+Line 64: Unexpected errors ['typeddicts_type_consistency.py:64:1: Object of type `dict[Unknown, Unknown]` is not assignable to `A3`']
+Line 83: Unexpected errors ['typeddicts_type_consistency.py:83:1: Object of type `B3` is not assignable to `Mapping[str, object]`']
+Line 84: Unexpected errors ['typeddicts_type_consistency.py:84:1: Object of type `B3` is not assignable to `Mapping[str, Any]`']
+Line 122: Unexpected errors ['typeddicts_type_consistency.py:122:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Outer1`']
+Line 151: Unexpected errors ['typeddicts_type_consistency.py:151:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Outer2`']
+Line 152: Unexpected errors ['typeddicts_type_consistency.py:152:1: Object of type `Outer2` is not assignable to `Outer3`']
+"""
+output = """
+error[invalid-assignment] typeddicts_type_consistency.py:18:1: Object of type `dict[Unknown, Unknown]` is not assignable to `B1`
+error[invalid-assignment] typeddicts_type_consistency.py:21:1: Object of type `B1` is not assignable to `A1`
+error[invalid-assignment] typeddicts_type_consistency.py:24:1: Object of type `B1` is not assignable to `Mapping[str, object]`
+error[invalid-assignment] typeddicts_type_consistency.py:37:1: Object of type `dict[Unknown, Unknown]` is not assignable to `B2`
+error[invalid-assignment] typeddicts_type_consistency.py:38:1: Object of type `B2` is not assignable to `A2`
+error[invalid-assignment] typeddicts_type_consistency.py:61:1: Object of type `dict[Unknown, Unknown]` is not assignable to `B3`
+error[invalid-assignment] typeddicts_type_consistency.py:62:1: Object of type `B3` is not assignable to `A3`
+error[invalid-assignment] typeddicts_type_consistency.py:64:1: Object of type `dict[Unknown, Unknown]` is not assignable to `A3`
+error[invalid-assignment] typeddicts_type_consistency.py:65:1: Object of type `A3` is not assignable to `B3`
+error[invalid-assignment] typeddicts_type_consistency.py:69:1: Object of type `dict[Unknown, Unknown]` is not assignable to `A3`
+error[invalid-assignment] typeddicts_type_consistency.py:76:1: Object of type `B3` is not assignable to `dict[str, int]`
+error[invalid-assignment] typeddicts_type_consistency.py:77:1: Object of type `B3` is not assignable to `dict[str, object]`
+error[invalid-assignment] typeddicts_type_consistency.py:78:1: Object of type `B3` is not assignable to `dict[Any, Any]`
+error[invalid-assignment] typeddicts_type_consistency.py:82:1: Object of type `B3` is not assignable to `Mapping[str, int]`
+error[invalid-assignment] typeddicts_type_consistency.py:83:1: Object of type `B3` is not assignable to `Mapping[str, object]`
+error[invalid-assignment] typeddicts_type_consistency.py:84:1: Object of type `B3` is not assignable to `Mapping[str, Any]`
+error[invalid-assignment] typeddicts_type_consistency.py:101:1: Object of type `Unknown | None` is not assignable to `str`
+error[invalid-assignment] typeddicts_type_consistency.py:122:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Outer1`
+error[invalid-assignment] typeddicts_type_consistency.py:126:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Outer1`
+error[invalid-assignment] typeddicts_type_consistency.py:151:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Outer2`
+error[invalid-assignment] typeddicts_type_consistency.py:152:1: Object of type `Outer2` is not assignable to `Outer3`
+"""

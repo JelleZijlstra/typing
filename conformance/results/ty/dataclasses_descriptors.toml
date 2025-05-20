@@ -1,0 +1,19 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 23: Unexpected errors ['dataclasses_descriptors.py:23:62: Function can implicitly return `None`, which is not assignable to return type `int | Desc1`']
+Line 50: Unexpected errors ['dataclasses_descriptors.py:50:63: Function can implicitly return `None`, which is not assignable to return type `list[T] | T`']
+Line 61: Unexpected errors ['dataclasses_descriptors.py:61:1: Argument does not have asserted type `list[int]`', "dataclasses_descriptors.py:61:13: Attribute `x` can only be accessed on instances, not on the class object `<class 'DC2'>` itself."]
+Line 62: Unexpected errors ['dataclasses_descriptors.py:62:1: Argument does not have asserted type `list[str]`', "dataclasses_descriptors.py:62:13: Attribute `y` can only be accessed on instances, not on the class object `<class 'DC2'>` itself."]
+Line 66: Unexpected errors ['dataclasses_descriptors.py:66:1: Argument does not have asserted type `int`']
+Line 67: Unexpected errors ['dataclasses_descriptors.py:67:1: Argument does not have asserted type `str`']
+"""
+output = """
+error[invalid-return-type] dataclasses_descriptors.py:23:62: Function can implicitly return `None`, which is not assignable to return type `int | Desc1`
+error[invalid-return-type] dataclasses_descriptors.py:50:63: Function can implicitly return `None`, which is not assignable to return type `list[T] | T`
+error[type-assertion-failure] dataclasses_descriptors.py:61:1: Argument does not have asserted type `list[int]`
+error[unresolved-attribute] dataclasses_descriptors.py:61:13: Attribute `x` can only be accessed on instances, not on the class object `<class 'DC2'>` itself.
+error[type-assertion-failure] dataclasses_descriptors.py:62:1: Argument does not have asserted type `list[str]`
+error[unresolved-attribute] dataclasses_descriptors.py:62:13: Attribute `y` can only be accessed on instances, not on the class object `<class 'DC2'>` itself.
+error[type-assertion-failure] dataclasses_descriptors.py:66:1: Argument does not have asserted type `int`
+error[type-assertion-failure] dataclasses_descriptors.py:67:1: Argument does not have asserted type `str`
+"""

@@ -1,0 +1,12 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 44: Expected 1 errors
+Line 65: Expected 1 errors
+Lines 54, 55: Expected error (tag 'Y1')
+Line 22: Unexpected errors ['typeddicts_inheritance.py:22:1: Object of type `dict[Unknown, Unknown]` is not assignable to `BookBasedMovie`']
+Line 24: Unexpected errors ['typeddicts_inheritance.py:24:1: Object of type `BookBasedMovie` is not assignable to `BookBasedMovieAlso`']
+"""
+output = """
+error[invalid-assignment] typeddicts_inheritance.py:22:1: Object of type `dict[Unknown, Unknown]` is not assignable to `BookBasedMovie`
+error[invalid-assignment] typeddicts_inheritance.py:24:1: Object of type `BookBasedMovie` is not assignable to `BookBasedMovieAlso`
+"""

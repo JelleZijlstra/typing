@@ -1,0 +1,17 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 24: Expected 1 errors
+Line 36: Expected 1 errors
+Line 50: Expected 1 errors
+Line 51: Expected 1 errors
+Line 60: Expected 1 errors
+Line 61: Expected 1 errors
+Line 21: Unexpected errors ['typeddicts_readonly.py:21:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Band`']
+Line 49: Unexpected errors ['typeddicts_readonly.py:49:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie1`']
+Line 59: Unexpected errors ['typeddicts_readonly.py:59:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie2`']
+"""
+output = """
+error[invalid-assignment] typeddicts_readonly.py:21:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Band`
+error[invalid-assignment] typeddicts_readonly.py:49:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie1`
+error[invalid-assignment] typeddicts_readonly.py:59:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie2`
+"""

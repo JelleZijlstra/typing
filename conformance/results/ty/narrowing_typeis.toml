@@ -1,0 +1,32 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 105: Expected 1 errors
+Line 110: Expected 1 errors
+Line 132: Expected 1 errors
+Line 152: Expected 1 errors
+Line 169: Expected 1 errors
+Line 170: Expected 1 errors
+Line 191: Expected 1 errors
+Line 195: Expected 1 errors
+Line 199: Expected 1 errors
+Line 19: Unexpected errors ['narrowing_typeis.py:19:9: Argument does not have asserted type `tuple[str, str]`']
+Line 38: Unexpected errors ['narrowing_typeis.py:38:9: Argument does not have asserted type `int`']
+Line 72: Unexpected errors ['narrowing_typeis.py:72:9: Argument does not have asserted type `int`']
+Line 76: Unexpected errors ['narrowing_typeis.py:76:9: Argument does not have asserted type `int`']
+Line 80: Unexpected errors ['narrowing_typeis.py:80:9: Argument does not have asserted type `int`']
+Line 84: Unexpected errors ['narrowing_typeis.py:84:9: Argument does not have asserted type `int`']
+Line 88: Unexpected errors ['narrowing_typeis.py:88:9: Argument does not have asserted type `int`']
+Line 92: Unexpected errors ['narrowing_typeis.py:92:9: Argument does not have asserted type `B`']
+Line 96: Unexpected errors ['narrowing_typeis.py:96:9: Argument does not have asserted type `B`']
+"""
+output = """
+error[type-assertion-failure] narrowing_typeis.py:19:9: Argument does not have asserted type `tuple[str, str]`
+error[type-assertion-failure] narrowing_typeis.py:38:9: Argument does not have asserted type `int`
+error[type-assertion-failure] narrowing_typeis.py:72:9: Argument does not have asserted type `int`
+error[type-assertion-failure] narrowing_typeis.py:76:9: Argument does not have asserted type `int`
+error[type-assertion-failure] narrowing_typeis.py:80:9: Argument does not have asserted type `int`
+error[type-assertion-failure] narrowing_typeis.py:84:9: Argument does not have asserted type `int`
+error[type-assertion-failure] narrowing_typeis.py:88:9: Argument does not have asserted type `int`
+error[type-assertion-failure] narrowing_typeis.py:92:9: Argument does not have asserted type `B`
+error[type-assertion-failure] narrowing_typeis.py:96:9: Argument does not have asserted type `B`
+"""

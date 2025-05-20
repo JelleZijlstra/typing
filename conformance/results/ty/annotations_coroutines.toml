@@ -1,0 +1,7 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 27: Unexpected errors ['annotations_coroutines.py:27:5: Argument does not have asserted type `str`']
+"""
+output = """
+error[type-assertion-failure] annotations_coroutines.py:27:5: Argument does not have asserted type `str`
+"""

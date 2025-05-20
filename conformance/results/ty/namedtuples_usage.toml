@@ -1,0 +1,29 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 34: Expected 1 errors
+Line 35: Expected 1 errors
+Line 40: Expected 1 errors
+Line 41: Expected 1 errors
+Line 42: Expected 1 errors
+Line 43: Expected 1 errors
+Line 52: Expected 1 errors
+Line 53: Expected 1 errors
+Line 27: Unexpected errors ['namedtuples_usage.py:27:1: Argument does not have asserted type `int`']
+Line 28: Unexpected errors ['namedtuples_usage.py:28:1: Argument does not have asserted type `int`']
+Line 29: Unexpected errors ['namedtuples_usage.py:29:1: Argument does not have asserted type `str`']
+Line 30: Unexpected errors ['namedtuples_usage.py:30:1: Argument does not have asserted type `str`']
+Line 31: Unexpected errors ['namedtuples_usage.py:31:1: Argument does not have asserted type `int`']
+Line 32: Unexpected errors ['namedtuples_usage.py:32:1: Argument does not have asserted type `int`']
+Line 49: Unexpected errors ['namedtuples_usage.py:49:1: Argument does not have asserted type `int`']
+Line 50: Unexpected errors ['namedtuples_usage.py:50:1: Argument does not have asserted type `str`']
+"""
+output = """
+error[type-assertion-failure] namedtuples_usage.py:27:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_usage.py:28:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_usage.py:29:1: Argument does not have asserted type `str`
+error[type-assertion-failure] namedtuples_usage.py:30:1: Argument does not have asserted type `str`
+error[type-assertion-failure] namedtuples_usage.py:31:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_usage.py:32:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_usage.py:49:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_usage.py:50:1: Argument does not have asserted type `str`
+"""

@@ -1,0 +1,10 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 39: Expected 1 errors
+Line 20: Unexpected errors ['enums_behaviors.py:20:5: Argument does not have asserted type `Color`']
+Line 26: Unexpected errors ['enums_behaviors.py:26:1: Argument does not have asserted type `Color`']
+"""
+output = """
+error[type-assertion-failure] enums_behaviors.py:20:5: Argument does not have asserted type `Color`
+error[type-assertion-failure] enums_behaviors.py:26:1: Argument does not have asserted type `Color`
+"""

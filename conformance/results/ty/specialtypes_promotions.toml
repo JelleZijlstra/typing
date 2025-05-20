@@ -1,0 +1,6 @@
+conformance_automated = "Pass"
+errors_diff = """
+"""
+output = """
+warning[possibly-unbound-attribute] specialtypes_promotions.py:13:5: Attribute `numerator` on type `int | float` is possibly unbound
+"""

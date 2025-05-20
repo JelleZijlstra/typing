@@ -1,0 +1,10 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 63: Unexpected errors ['enums_expansion.py:63:13: Argument does not have asserted type `CustomFlags`']
+"""
+output = """
+error[type-assertion-failure] enums_expansion.py:25:9: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] enums_expansion.py:35:13: Argument does not have asserted type `Never`
+error[type-assertion-failure] enums_expansion.py:53:9: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] enums_expansion.py:63:13: Argument does not have asserted type `CustomFlags`
+"""

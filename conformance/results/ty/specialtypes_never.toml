@@ -1,0 +1,12 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 32: Unexpected errors ['specialtypes_never.py:32:12: Return type does not match returned value: expected `int`, found `Literal["whatever works"]`']
+Line 76: Unexpected errors ['specialtypes_never.py:76:22: Function can implicitly return `None`, which is not assignable to return type `Never`']
+"""
+output = """
+error[invalid-return-type] specialtypes_never.py:19:22: Function can implicitly return `None`, which is not assignable to return type `Never`
+error[invalid-return-type] specialtypes_never.py:32:12: Return type does not match returned value: expected `int`, found `Literal["whatever works"]`
+error[invalid-return-type] specialtypes_never.py:76:22: Function can implicitly return `None`, which is not assignable to return type `Never`
+error[invalid-assignment] specialtypes_never.py:86:5: Object of type `list[Never]` is not assignable to `list[int]`
+error[invalid-return-type] specialtypes_never.py:105:12: Return type does not match returned value: expected `ClassC[U]`, found `ClassC[Never]`
+"""

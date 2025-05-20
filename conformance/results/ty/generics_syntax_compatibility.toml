@@ -1,0 +1,9 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 14: Expected 1 errors
+Line 23: Unexpected errors ['generics_syntax_compatibility.py:23:38: Function can implicitly return `None`, which is not assignable to return type `V | K`']
+"""
+output = """
+error[invalid-return-type] generics_syntax_compatibility.py:23:38: Function can implicitly return `None`, which is not assignable to return type `V | K`
+error[invalid-return-type] generics_syntax_compatibility.py:26:41: Function can implicitly return `None`, which is not assignable to return type `M | K`
+"""

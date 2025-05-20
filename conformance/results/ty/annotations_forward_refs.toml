@@ -1,0 +1,35 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 24: Expected 1 errors
+Line 25: Expected 1 errors
+Line 41: Expected 1 errors
+Line 42: Expected 1 errors
+Line 43: Expected 1 errors
+Line 44: Expected 1 errors
+Line 45: Expected 1 errors
+Line 46: Expected 1 errors
+Line 47: Expected 1 errors
+Line 48: Expected 1 errors
+Line 50: Expected 1 errors
+Line 51: Expected 1 errors
+Line 52: Expected 1 errors
+Line 53: Expected 1 errors
+Line 82: Unexpected errors ['annotations_forward_refs.py:82:11: Variable of type `Literal[""]` is not allowed in a type expression']
+Line 87: Unexpected errors ['annotations_forward_refs.py:87:9: Variable of type `def int(self) -> None` is not allowed in a type expression']
+Line 95: Unexpected errors ['annotations_forward_refs.py:95:1: Argument does not have asserted type `str`']
+Line 96: Unexpected errors ['annotations_forward_refs.py:96:1: Argument does not have asserted type `int`']
+"""
+output = """
+error[unresolved-reference] annotations_forward_refs.py:22:7: Name `ClassA` used when not defined
+error[unresolved-reference] annotations_forward_refs.py:23:12: Name `ClassA` used when not defined
+error[invalid-type-form] annotations_forward_refs.py:49:10: Variable of type `Literal[1]` is not allowed in a type expression
+error[fstring-type-annotation] annotations_forward_refs.py:54:11: Type expressions cannot use f-strings
+error[invalid-type-form] annotations_forward_refs.py:55:11: Variable of type `<module 'types'>` is not allowed in a type expression
+error[unresolved-reference] annotations_forward_refs.py:66:26: Name `ClassB` used when not defined
+error[unresolved-reference] annotations_forward_refs.py:80:14: Name `ClassF` used when not defined
+error[invalid-type-form] annotations_forward_refs.py:82:11: Variable of type `Literal[""]` is not allowed in a type expression
+error[invalid-type-form] annotations_forward_refs.py:87:9: Variable of type `def int(self) -> None` is not allowed in a type expression
+error[invalid-type-form] annotations_forward_refs.py:89:8: Variable of type `def int(self) -> None` is not allowed in a type expression
+error[type-assertion-failure] annotations_forward_refs.py:95:1: Argument does not have asserted type `str`
+error[type-assertion-failure] annotations_forward_refs.py:96:1: Argument does not have asserted type `int`
+"""

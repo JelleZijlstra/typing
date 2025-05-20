@@ -1,0 +1,11 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 20: Unexpected errors ['namedtuples_type_compat.py:20:1: Object of type `Point` is not assignable to `tuple[int, int, str]`']
+Line 27: Unexpected errors ['namedtuples_type_compat.py:27:1: Object of type `Point` is not assignable to `tuple[int | float, int | float, str]`']
+"""
+output = """
+error[invalid-assignment] namedtuples_type_compat.py:20:1: Object of type `Point` is not assignable to `tuple[int, int, str]`
+error[invalid-assignment] namedtuples_type_compat.py:22:1: Object of type `Point` is not assignable to `tuple[int, int]`
+error[invalid-assignment] namedtuples_type_compat.py:23:1: Object of type `Point` is not assignable to `tuple[int, str, str]`
+error[invalid-assignment] namedtuples_type_compat.py:27:1: Object of type `Point` is not assignable to `tuple[int | float, int | float, str]`
+"""

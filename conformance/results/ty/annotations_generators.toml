@@ -1,0 +1,23 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 51: Expected 1 errors
+Line 54: Expected 1 errors
+Line 57: Expected 1 errors
+Line 66: Expected 1 errors
+Line 75: Expected 1 errors
+Line 87: Expected 1 errors
+Line 92: Expected 1 errors
+Line 118: Expected 1 errors
+Line 119: Expected 1 errors
+Line 135: Expected 1 errors
+Line 167: Unexpected errors ['annotations_generators.py:167:5: Argument does not have asserted type `AsyncGenerator[str, None]`']
+Line 174: Unexpected errors ['annotations_generators.py:174:5: Argument does not have asserted type `AsyncGenerator[str, None]`']
+Line 193: Unexpected errors ['annotations_generators.py:193:1: Argument does not have asserted type `() -> AsyncIterator[int]`']
+"""
+output = """
+error[invalid-return-type] annotations_generators.py:86:21: Return type does not match returned value: expected `int`, found `types.GeneratorType`
+error[invalid-return-type] annotations_generators.py:91:27: Return type does not match returned value: expected `int`, found `types.AsyncGeneratorType`
+error[type-assertion-failure] annotations_generators.py:167:5: Argument does not have asserted type `AsyncGenerator[str, None]`
+error[type-assertion-failure] annotations_generators.py:174:5: Argument does not have asserted type `AsyncGenerator[str, None]`
+error[type-assertion-failure] annotations_generators.py:193:1: Argument does not have asserted type `() -> AsyncIterator[int]`
+"""

@@ -1,0 +1,28 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 53: Expected 1 errors
+Line 17: Unexpected errors ['dataclasses_kwonly.py:17:1: No argument provided for required parameter `_`']
+Line 18: Unexpected errors ['dataclasses_kwonly.py:18:1: No argument provided for required parameter `_`']
+Line 19: Unexpected errors ['dataclasses_kwonly.py:19:1: No argument provided for required parameter `_`']
+Line 20: Unexpected errors ['dataclasses_kwonly.py:20:1: No argument provided for required parameter `_`']
+Line 32: Unexpected errors ['dataclasses_kwonly.py:32:1: No argument provided for required parameter `a`', 'dataclasses_kwonly.py:32:5: Argument is incorrect: Expected `int`, found `Literal["hi"]`']
+Line 35: Unexpected errors ['dataclasses_kwonly.py:35:1: No argument provided for required parameter `a`', 'dataclasses_kwonly.py:35:5: Argument is incorrect: Expected `int`, found `Literal["hi"]`', 'dataclasses_kwonly.py:35:11: Multiple values provided for parameter `b`']
+Line 61: Unexpected errors ['dataclasses_kwonly.py:61:1: No argument provided for required parameter `c`', 'dataclasses_kwonly.py:61:9: Argument is incorrect: Expected `int`, found `float`', 'dataclasses_kwonly.py:61:14: Multiple values provided for parameter `b`']
+"""
+output = """
+error[missing-argument] dataclasses_kwonly.py:17:1: No argument provided for required parameter `_`
+error[missing-argument] dataclasses_kwonly.py:18:1: No argument provided for required parameter `_`
+error[missing-argument] dataclasses_kwonly.py:19:1: No argument provided for required parameter `_`
+error[missing-argument] dataclasses_kwonly.py:20:1: No argument provided for required parameter `_`
+error[invalid-argument-type] dataclasses_kwonly.py:23:11: Argument is incorrect: Expected `KW_ONLY`, found `Literal[1]`
+error[missing-argument] dataclasses_kwonly.py:32:1: No argument provided for required parameter `a`
+error[invalid-argument-type] dataclasses_kwonly.py:32:5: Argument is incorrect: Expected `int`, found `Literal["hi"]`
+error[missing-argument] dataclasses_kwonly.py:35:1: No argument provided for required parameter `a`
+error[invalid-argument-type] dataclasses_kwonly.py:35:5: Argument is incorrect: Expected `int`, found `Literal["hi"]`
+error[parameter-already-assigned] dataclasses_kwonly.py:35:11: Multiple values provided for parameter `b`
+error[invalid-argument-type] dataclasses_kwonly.py:38:5: Argument is incorrect: Expected `int`, found `Literal["hi"]`
+error[invalid-argument-type] dataclasses_kwonly.py:38:11: Argument is incorrect: Expected `str`, found `Literal[1]`
+error[missing-argument] dataclasses_kwonly.py:61:1: No argument provided for required parameter `c`
+error[invalid-argument-type] dataclasses_kwonly.py:61:9: Argument is incorrect: Expected `int`, found `float`
+error[parameter-already-assigned] dataclasses_kwonly.py:61:14: Multiple values provided for parameter `b`
+"""

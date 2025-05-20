@@ -1,0 +1,22 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 34: Unexpected errors ['typeddicts_readonly_consistency.py:34:5: Object of type `B1` is not assignable to `A1`']
+Line 35: Unexpected errors ['typeddicts_readonly_consistency.py:35:5: Object of type `C1` is not assignable to `A1`']
+Line 41: Unexpected errors ['typeddicts_readonly_consistency.py:41:5: Object of type `B1` is not assignable to `C1`']
+Line 78: Unexpected errors ['typeddicts_readonly_consistency.py:78:5: Object of type `B2` is not assignable to `A2`']
+Line 79: Unexpected errors ['typeddicts_readonly_consistency.py:79:5: Object of type `C2` is not assignable to `A2`']
+"""
+output = """
+error[invalid-assignment] typeddicts_readonly_consistency.py:34:5: Object of type `B1` is not assignable to `A1`
+error[invalid-assignment] typeddicts_readonly_consistency.py:35:5: Object of type `C1` is not assignable to `A1`
+error[invalid-assignment] typeddicts_readonly_consistency.py:37:5: Object of type `A1` is not assignable to `B1`
+error[invalid-assignment] typeddicts_readonly_consistency.py:38:5: Object of type `C1` is not assignable to `B1`
+error[invalid-assignment] typeddicts_readonly_consistency.py:40:5: Object of type `A1` is not assignable to `C1`
+error[invalid-assignment] typeddicts_readonly_consistency.py:41:5: Object of type `B1` is not assignable to `C1`
+error[invalid-assignment] typeddicts_readonly_consistency.py:78:5: Object of type `B2` is not assignable to `A2`
+error[invalid-assignment] typeddicts_readonly_consistency.py:79:5: Object of type `C2` is not assignable to `A2`
+error[invalid-assignment] typeddicts_readonly_consistency.py:81:5: Object of type `A2` is not assignable to `B2`
+error[invalid-assignment] typeddicts_readonly_consistency.py:82:5: Object of type `C2` is not assignable to `B2`
+error[invalid-assignment] typeddicts_readonly_consistency.py:84:5: Object of type `A2` is not assignable to `C2`
+error[invalid-assignment] typeddicts_readonly_consistency.py:85:5: Object of type `B2` is not assignable to `C2`
+"""

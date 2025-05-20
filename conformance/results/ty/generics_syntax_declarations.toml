@@ -1,0 +1,15 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 44: Expected 1 errors
+"""
+output = """
+error[invalid-generic-class] generics_syntax_declarations.py:17:1: Cannot both inherit from `typing.Generic` and use PEP 695 type variables
+error[invalid-generic-class] generics_syntax_declarations.py:25:1: Cannot both inherit from subscripted `typing.Protocol` and use PEP 695 type variables
+error[unresolved-attribute] generics_syntax_declarations.py:32:9: Type `T` has no attribute `is_integer`
+error[invalid-type-form] generics_syntax_declarations.py:48:17: List literals are not allowed in this context in a type expression
+error[invalid-type-variable-constraints] generics_syntax_declarations.py:60:17: TypeVar must have at least two constrained types
+error[invalid-type-variable-constraints] generics_syntax_declarations.py:64:17: TypeVar must have at least two constrained types
+error[invalid-type-form] generics_syntax_declarations.py:71:17: Variable of type `tuple[<class 'bytes'>, <class 'str'>]` is not allowed in a type expression
+error[invalid-type-form] generics_syntax_declarations.py:75:18: Int literals are not allowed in this context in a type expression
+error[unresolved-reference] generics_syntax_declarations.py:79:23: Name `S` used when not defined
+"""

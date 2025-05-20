@@ -1,0 +1,14 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 68: Expected 1 errors
+Line 98: Expected 1 errors
+Line 45: Unexpected errors ['generics_base_class.py:45:5: Argument does not have asserted type `Iterator[int]`']
+"""
+output = """
+error[invalid-argument-type] generics_base_class.py:26:26: Argument to function `takes_dict_incorrect` is incorrect: Expected `dict[str, list[object]]`, found `SymbolTable`
+error[invalid-type-form] generics_base_class.py:29:14: `typing.Generic` is not allowed in type expressions
+error[invalid-type-form] generics_base_class.py:30:8: `typing.Generic` is not allowed in type expressions
+error[type-assertion-failure] generics_base_class.py:45:5: Argument does not have asserted type `Iterator[int]`
+error[too-many-positional-arguments] generics_base_class.py:49:22: Too many positional arguments to class `LinkedList`: expected 1, got 2
+error[too-many-positional-arguments] generics_base_class.py:61:18: Too many positional arguments to class `MyDict`: expected 1, got 2
+"""

@@ -1,0 +1,16 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 26: Expected 1 errors
+Line 33: Unexpected errors ['generics_typevartuple_callable.py:33:54: Function can implicitly return `None`, which is not assignable to return type `tuple[int | float | complex, str, int]`']
+Line 37: Unexpected errors ['generics_typevartuple_callable.py:37:34: Function can implicitly return `None`, which is not assignable to return type `tuple[str]`']
+Line 41: Unexpected errors ['generics_typevartuple_callable.py:41:1: Argument does not have asserted type `tuple[str, int, int | float | complex]`']
+Line 42: Unexpected errors ['generics_typevartuple_callable.py:42:1: Argument does not have asserted type `tuple[str]`']
+Line 49: Unexpected errors ['generics_typevartuple_callable.py:49:1: Argument does not have asserted type `tuple[int | float, str, int | float | complex]`']
+"""
+output = """
+error[invalid-return-type] generics_typevartuple_callable.py:33:54: Function can implicitly return `None`, which is not assignable to return type `tuple[int | float | complex, str, int]`
+error[invalid-return-type] generics_typevartuple_callable.py:37:34: Function can implicitly return `None`, which is not assignable to return type `tuple[str]`
+error[type-assertion-failure] generics_typevartuple_callable.py:41:1: Argument does not have asserted type `tuple[str, int, int | float | complex]`
+error[type-assertion-failure] generics_typevartuple_callable.py:42:1: Argument does not have asserted type `tuple[str]`
+error[type-assertion-failure] generics_typevartuple_callable.py:49:1: Argument does not have asserted type `tuple[int | float, str, int | float | complex]`
+"""

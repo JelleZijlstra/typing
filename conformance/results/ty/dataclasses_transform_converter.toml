@@ -1,0 +1,28 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 118: Expected 1 errors
+Line 133: Expected 1 errors
+Line 25: Unexpected errors ['dataclasses_transform_converter.py:25:6: Function can implicitly return `None`, which is not assignable to return type `T`']
+Line 102: Unexpected errors ["dataclasses_transform_converter.py:102:42: Argument to function `model_field` is incorrect: Expected `(Unknown, /) -> Unknown`, found `<class 'ConverterClass'>`"]
+Line 112: Unexpected errors ['dataclasses_transform_converter.py:112:11: Too many positional arguments to bound method `__init__`: expected 1, got 6']
+Line 114: Unexpected errors ['dataclasses_transform_converter.py:114:1: Object of type `Literal["f1"]` is not assignable to attribute `field0` of type `int`']
+Line 115: Unexpected errors ['dataclasses_transform_converter.py:115:1: Object of type `Literal["f6"]` is not assignable to attribute `field3` of type `ConverterClass`']
+Line 116: Unexpected errors ['dataclasses_transform_converter.py:116:1: Object of type `Literal[b"f6"]` is not assignable to attribute `field3` of type `ConverterClass`']
+Line 121: Unexpected errors ['dataclasses_transform_converter.py:121:11: Too many positional arguments to bound method `__init__`: expected 1, got 7']
+"""
+output = """
+error[invalid-return-type] dataclasses_transform_converter.py:25:6: Function can implicitly return `None`, which is not assignable to return type `T`
+error[invalid-argument-type] dataclasses_transform_converter.py:48:31: Argument to function `model_field` is incorrect: Expected `(Unknown, /) -> Unknown`, found `def bad_converter1() -> int`
+error[invalid-argument-type] dataclasses_transform_converter.py:49:31: Argument to function `model_field` is incorrect: Expected `(Unknown, /) -> Unknown`, found `def bad_converter2(*, x: int) -> int`
+error[invalid-argument-type] dataclasses_transform_converter.py:102:42: Argument to function `model_field` is incorrect: Expected `(Unknown, /) -> Unknown`, found `<class 'ConverterClass'>`
+error[too-many-positional-arguments] dataclasses_transform_converter.py:107:5: Too many positional arguments to bound method `__init__`: expected 1, got 6
+error[too-many-positional-arguments] dataclasses_transform_converter.py:108:5: Too many positional arguments to bound method `__init__`: expected 1, got 6
+error[too-many-positional-arguments] dataclasses_transform_converter.py:109:5: Too many positional arguments to bound method `__init__`: expected 1, got 6
+error[too-many-positional-arguments] dataclasses_transform_converter.py:112:11: Too many positional arguments to bound method `__init__`: expected 1, got 6
+error[invalid-assignment] dataclasses_transform_converter.py:114:1: Object of type `Literal["f1"]` is not assignable to attribute `field0` of type `int`
+error[invalid-assignment] dataclasses_transform_converter.py:115:1: Object of type `Literal["f6"]` is not assignable to attribute `field3` of type `ConverterClass`
+error[invalid-assignment] dataclasses_transform_converter.py:116:1: Object of type `Literal[b"f6"]` is not assignable to attribute `field3` of type `ConverterClass`
+error[invalid-assignment] dataclasses_transform_converter.py:119:1: Object of type `Literal[1]` is not assignable to attribute `field3` of type `ConverterClass`
+error[too-many-positional-arguments] dataclasses_transform_converter.py:121:11: Too many positional arguments to bound method `__init__`: expected 1, got 7
+error[invalid-argument-type] dataclasses_transform_converter.py:130:31: Argument to function `model_field` is incorrect: Expected `(Literal[1], /) -> Unknown`, found `def converter_simple(s: str) -> int`
+"""

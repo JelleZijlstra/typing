@@ -1,0 +1,43 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 32: Expected 1 errors
+Line 33: Expected 1 errors
+Line 59: Expected 1 errors
+Line 79: Expected 1 errors
+Line 105: Expected 1 errors
+Line 23: Unexpected errors ['namedtuples_define_class.py:23:1: Argument does not have asserted type `int`']
+Line 24: Unexpected errors ['namedtuples_define_class.py:24:1: Argument does not have asserted type `int`']
+Line 25: Unexpected errors ['namedtuples_define_class.py:25:1: Argument does not have asserted type `str`']
+Line 26: Unexpected errors ['namedtuples_define_class.py:26:1: Argument does not have asserted type `str`']
+Line 27: Unexpected errors ['namedtuples_define_class.py:27:1: Argument does not have asserted type `int`']
+Line 28: Unexpected errors ['namedtuples_define_class.py:28:1: Argument does not have asserted type `int`']
+Line 29: Unexpected errors ['namedtuples_define_class.py:29:1: Argument does not have asserted type `tuple[int, int]`']
+Line 30: Unexpected errors ['namedtuples_define_class.py:30:1: Argument does not have asserted type `tuple[int, int, str]`']
+Line 73: Unexpected errors ['namedtuples_define_class.py:73:1: Object of type `PointWithName` is not assignable to `tuple[int, int, str]`']
+Line 93: Unexpected errors ['namedtuples_define_class.py:93:20: Argument is incorrect: Expected `T`, found `float`']
+Line 94: Unexpected errors ['namedtuples_define_class.py:94:1: Argument does not have asserted type `Property[int | float]`']
+Line 95: Unexpected errors ['namedtuples_define_class.py:95:1: Argument does not have asserted type `int | float`']
+Line 96: Unexpected errors ['namedtuples_define_class.py:96:1: Argument does not have asserted type `int | float`']
+"""
+output = """
+error[type-assertion-failure] namedtuples_define_class.py:23:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_define_class.py:24:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_define_class.py:25:1: Argument does not have asserted type `str`
+error[type-assertion-failure] namedtuples_define_class.py:26:1: Argument does not have asserted type `str`
+error[type-assertion-failure] namedtuples_define_class.py:27:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_define_class.py:28:1: Argument does not have asserted type `int`
+error[type-assertion-failure] namedtuples_define_class.py:29:1: Argument does not have asserted type `tuple[int, int]`
+error[type-assertion-failure] namedtuples_define_class.py:30:1: Argument does not have asserted type `tuple[int, int, str]`
+error[missing-argument] namedtuples_define_class.py:44:6: No argument provided for required parameter `y`
+error[missing-argument] namedtuples_define_class.py:45:6: No argument provided for required parameter `y`
+error[invalid-argument-type] namedtuples_define_class.py:46:15: Argument is incorrect: Expected `int`, found `Literal[""]`
+error[invalid-argument-type] namedtuples_define_class.py:47:18: Argument is incorrect: Expected `str`, found `Literal[3]`
+error[too-many-positional-arguments] namedtuples_define_class.py:48:22: Too many positional arguments: expected 4, got 5
+error[unknown-argument] namedtuples_define_class.py:49:23: Argument `other` does not match any known parameter
+error[invalid-assignment] namedtuples_define_class.py:73:1: Object of type `PointWithName` is not assignable to `tuple[int, int, str]`
+error[invalid-argument-type] namedtuples_define_class.py:93:20: Argument is incorrect: Expected `T`, found `float`
+error[type-assertion-failure] namedtuples_define_class.py:94:1: Argument does not have asserted type `Property[int | float]`
+error[type-assertion-failure] namedtuples_define_class.py:95:1: Argument does not have asserted type `int | float`
+error[type-assertion-failure] namedtuples_define_class.py:96:1: Argument does not have asserted type `int | float`
+error[invalid-argument-type] namedtuples_define_class.py:98:19: Argument is incorrect: Expected `str`, found `float`
+"""

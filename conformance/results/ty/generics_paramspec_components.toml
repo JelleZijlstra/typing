@@ -1,0 +1,39 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 17: Expected 1 errors
+Line 20: Expected 1 errors
+Line 23: Expected 1 errors
+Line 26: Expected 1 errors
+Line 30: Expected 1 errors
+Line 35: Expected 1 errors
+Line 36: Expected 1 errors
+Line 38: Expected 1 errors
+Line 41: Expected 1 errors
+Line 49: Expected 1 errors
+Line 51: Expected 1 errors
+Line 60: Expected 1 errors
+Line 70: Expected 1 errors
+Line 72: Expected 1 errors
+Line 83: Expected 1 errors
+Line 98: Expected 1 errors
+Line 13: Unexpected errors ['generics_paramspec_components.py:13:36: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 34: Unexpected errors ['generics_paramspec_components.py:34:36: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 45: Unexpected errors ['generics_paramspec_components.py:45:27: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`', 'generics_paramspec_components.py:45:48: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 47: Unexpected errors ['generics_paramspec_components.py:47:9: Argument does not have asserted type `int`']
+Line 56: Unexpected errors ['generics_paramspec_components.py:56:21: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 66: Unexpected errors ['generics_paramspec_components.py:66:63: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 77: Unexpected errors ['generics_paramspec_components.py:77:23: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`', 'generics_paramspec_components.py:77:45: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 88: Unexpected errors ['generics_paramspec_components.py:88:23: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+"""
+output = """
+error[invalid-type-form] generics_paramspec_components.py:13:36: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_components.py:34:36: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_components.py:45:27: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_components.py:45:48: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[type-assertion-failure] generics_paramspec_components.py:47:9: Argument does not have asserted type `int`
+error[invalid-type-form] generics_paramspec_components.py:56:21: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_components.py:66:63: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_components.py:77:23: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_components.py:77:45: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_components.py:88:23: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+"""

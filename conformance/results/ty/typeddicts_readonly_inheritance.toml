@@ -1,0 +1,22 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 36: Expected 1 errors
+Line 50: Expected 1 errors
+Line 82: Expected 1 errors
+Line 94: Expected 1 errors
+Line 98: Expected 1 errors
+Line 106: Expected 1 errors
+Line 119: Expected 1 errors
+Line 132: Expected 1 errors
+Line 23: Unexpected errors ['typeddicts_readonly_inheritance.py:23:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Album1`']
+Line 35: Unexpected errors ['typeddicts_readonly_inheritance.py:35:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Album2`']
+Line 80: Unexpected errors ['typeddicts_readonly_inheritance.py:80:1: Object of type `dict[Unknown, Unknown]` is not assignable to `User`']
+"""
+output = """
+error[invalid-assignment] typeddicts_readonly_inheritance.py:23:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Album1`
+error[invalid-assignment] typeddicts_readonly_inheritance.py:35:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Album2`
+error[invalid-assignment] typeddicts_readonly_inheritance.py:65:1: Object of type `dict[Unknown, Unknown]` is not assignable to `RequiredName`
+error[invalid-assignment] typeddicts_readonly_inheritance.py:80:1: Object of type `dict[Unknown, Unknown]` is not assignable to `User`
+error[invalid-assignment] typeddicts_readonly_inheritance.py:83:1: Object of type `dict[Unknown, Unknown]` is not assignable to `User`
+error[invalid-assignment] typeddicts_readonly_inheritance.py:84:1: Object of type `dict[Unknown, Unknown]` is not assignable to `User`
+"""

@@ -1,0 +1,13 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 55: Expected 1 errors
+Line 26: Unexpected errors ['generics_defaults_specialization.py:26:5: Argument does not have asserted type `SomethingWithNoDefaults[int, str]`']
+Line 27: Unexpected errors ['generics_defaults_specialization.py:27:5: Argument does not have asserted type `SomethingWithNoDefaults[int, bool]`']
+Line 45: Unexpected errors ['generics_defaults_specialization.py:45:1: Argument does not have asserted type `@Todo`']
+"""
+output = """
+error[type-assertion-failure] generics_defaults_specialization.py:26:5: Argument does not have asserted type `SomethingWithNoDefaults[int, str]`
+error[type-assertion-failure] generics_defaults_specialization.py:27:5: Argument does not have asserted type `SomethingWithNoDefaults[int, bool]`
+error[non-subscriptable] generics_defaults_specialization.py:30:1: Cannot subscript object of type `<class 'SomethingWithNoDefaults[int, DefaultStrT]'>` with no `__class_getitem__` method
+error[type-assertion-failure] generics_defaults_specialization.py:45:1: Argument does not have asserted type `@Todo`
+"""

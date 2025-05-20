@@ -1,0 +1,27 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 11: Unexpected errors ['generics_self_advanced.py:11:24: Function can implicitly return `None`, which is not assignable to return type `Self`']
+Line 18: Unexpected errors ['generics_self_advanced.py:18:1: Argument does not have asserted type `ParentA`']
+Line 19: Unexpected errors ['generics_self_advanced.py:19:1: Argument does not have asserted type `ChildA`']
+Line 28: Unexpected errors ['generics_self_advanced.py:28:25: Function can implicitly return `None`, which is not assignable to return type `Self`']
+Line 35: Unexpected errors ['generics_self_advanced.py:35:9: Argument does not have asserted type `Self`']
+Line 36: Unexpected errors ['generics_self_advanced.py:36:9: Argument does not have asserted type `list[Self]`']
+Line 37: Unexpected errors ['generics_self_advanced.py:37:9: Argument does not have asserted type `Self`']
+Line 38: Unexpected errors ['generics_self_advanced.py:38:9: Argument does not have asserted type `Self`']
+Line 43: Unexpected errors ['generics_self_advanced.py:43:9: Argument does not have asserted type `list[Self]`']
+Line 44: Unexpected errors ['generics_self_advanced.py:44:9: Argument does not have asserted type `Self`']
+Line 45: Unexpected errors ['generics_self_advanced.py:45:9: Argument does not have asserted type `Self`']
+"""
+output = """
+error[invalid-return-type] generics_self_advanced.py:11:24: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[type-assertion-failure] generics_self_advanced.py:18:1: Argument does not have asserted type `ParentA`
+error[type-assertion-failure] generics_self_advanced.py:19:1: Argument does not have asserted type `ChildA`
+error[invalid-return-type] generics_self_advanced.py:28:25: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[type-assertion-failure] generics_self_advanced.py:35:9: Argument does not have asserted type `Self`
+error[type-assertion-failure] generics_self_advanced.py:36:9: Argument does not have asserted type `list[Self]`
+error[type-assertion-failure] generics_self_advanced.py:37:9: Argument does not have asserted type `Self`
+error[type-assertion-failure] generics_self_advanced.py:38:9: Argument does not have asserted type `Self`
+error[type-assertion-failure] generics_self_advanced.py:43:9: Argument does not have asserted type `list[Self]`
+error[type-assertion-failure] generics_self_advanced.py:44:9: Argument does not have asserted type `Self`
+error[type-assertion-failure] generics_self_advanced.py:45:9: Argument does not have asserted type `Self`
+"""

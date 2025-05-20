@@ -1,0 +1,26 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 14: Unexpected errors ['generics_self_basic.py:14:9: Argument does not have asserted type `Self`']
+Line 51: Unexpected errors ['generics_self_basic.py:51:1: Argument does not have asserted type `Shape`']
+Line 52: Unexpected errors ['generics_self_basic.py:52:1: Argument does not have asserted type `Circle`']
+Line 54: Unexpected errors ['generics_self_basic.py:54:1: Argument does not have asserted type `Shape`']
+Line 55: Unexpected errors ['generics_self_basic.py:55:1: Argument does not have asserted type `Circle`']
+Line 64: Unexpected errors ['generics_self_basic.py:64:38: Function can implicitly return `None`, which is not assignable to return type `Self`']
+Line 74: Unexpected errors ['generics_self_basic.py:74:5: Argument does not have asserted type `Container[int]`']
+Line 75: Unexpected errors ['generics_self_basic.py:75:5: Argument does not have asserted type `Container[str]`']
+Line 83: Unexpected errors ['generics_self_basic.py:83:5: Argument does not have asserted type `Container[T]`']
+"""
+output = """
+error[type-assertion-failure] generics_self_basic.py:14:9: Argument does not have asserted type `Self`
+error[invalid-return-type] generics_self_basic.py:20:16: Return type does not match returned value: expected `Self`, found `Shape`
+error[invalid-return-type] generics_self_basic.py:33:16: Return type does not match returned value: expected `Self`, found `Shape`
+error[type-assertion-failure] generics_self_basic.py:51:1: Argument does not have asserted type `Shape`
+error[type-assertion-failure] generics_self_basic.py:52:1: Argument does not have asserted type `Circle`
+error[type-assertion-failure] generics_self_basic.py:54:1: Argument does not have asserted type `Shape`
+error[type-assertion-failure] generics_self_basic.py:55:1: Argument does not have asserted type `Circle`
+error[invalid-return-type] generics_self_basic.py:64:38: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[invalid-type-form] generics_self_basic.py:67:26: Special form `typing.Self` expected no type parameter
+error[type-assertion-failure] generics_self_basic.py:74:5: Argument does not have asserted type `Container[int]`
+error[type-assertion-failure] generics_self_basic.py:75:5: Argument does not have asserted type `Container[str]`
+error[type-assertion-failure] generics_self_basic.py:83:5: Argument does not have asserted type `Container[T]`
+"""

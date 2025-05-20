@@ -1,0 +1,10 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 27: Expected 1 errors
+Line 35: Expected 1 errors
+Line 36: Expected 1 errors
+Line 38: Expected 1 errors
+"""
+output = """
+error[invalid-attribute-access] dataclasses_final.py:37:1: Cannot assign to instance attribute `final_no_default` from the class object `<class 'D'>`
+"""

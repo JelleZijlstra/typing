@@ -1,0 +1,11 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 82: Expected 1 errors
+"""
+output = """
+error[invalid-assignment] protocols_merging.py:52:1: Object of type `SCConcrete2` is not assignable to `SizedAndClosable1`
+error[invalid-assignment] protocols_merging.py:53:1: Object of type `SCConcrete2` is not assignable to `SizedAndClosable2`
+error[invalid-assignment] protocols_merging.py:54:1: Object of type `SCConcrete2` is not assignable to `SizedAndClosable3`
+error[invalid-protocol] protocols_merging.py:67:16: Protocol class `BadProto` cannot inherit from non-protocol class `SizedAndClosable3`
+error[invalid-assignment] protocols_merging.py:83:1: Object of type `SCConcrete1` is not assignable to `SizedAndClosable4`
+"""

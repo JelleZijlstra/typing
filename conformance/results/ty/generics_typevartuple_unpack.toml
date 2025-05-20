@@ -1,0 +1,8 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 30: Expected 1 errors
+Line 17: Unexpected errors ['generics_typevartuple_unpack.py:17:13: `@Todo` is not a valid argument to `typing.Generic`']
+"""
+output = """
+error[invalid-argument-type] generics_typevartuple_unpack.py:17:13: `@Todo` is not a valid argument to `typing.Generic`
+"""

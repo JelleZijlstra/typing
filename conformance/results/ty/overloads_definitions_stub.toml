@@ -1,0 +1,15 @@
+conformance_automated = "Fail"
+errors_diff = """
+Lines 32, 33, 37: Expected error (tag 'func5')
+Lines 67, 69, 71, 73: Expected error (tag 'invalid_final')
+Lines 102, 107, 108, 111, 113: Expected error (tag 'override-final')
+Lines 120, 121, 122: Expected error (tag 'bad_override')
+Line 76: Unexpected errors ['overloads_definitions_stub.pyi:76:9: `@final` decorator should be applied only to the first overload']
+"""
+output = """
+error[invalid-overload] overloads_definitions_stub.pyi:14:5: Overloaded function `func1` requires at least two overloads
+error[invalid-overload] overloads_definitions_stub.pyi:44:9: Overloaded function `func6` does not use the `@classmethod` decorator consistently
+error[invalid-overload] overloads_definitions_stub.pyi:76:9: `@final` decorator should be applied only to the first overload
+error[invalid-overload] overloads_definitions_stub.pyi:86:9: `@final` decorator should be applied only to the first overload
+error[invalid-overload] overloads_definitions_stub.pyi:147:9: `@override` decorator should be applied only to the first overload
+"""

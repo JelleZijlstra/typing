@@ -1,0 +1,17 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 50: Unexpected errors ['exceptions_context_managers.py:50:5: Argument does not have asserted type `int | str`']
+Line 57: Unexpected errors ['exceptions_context_managers.py:57:5: Argument does not have asserted type `int | str`']
+Line 64: Unexpected errors ['exceptions_context_managers.py:64:5: Argument does not have asserted type `str`']
+Line 71: Unexpected errors ['exceptions_context_managers.py:71:5: Argument does not have asserted type `str`']
+Line 78: Unexpected errors ['exceptions_context_managers.py:78:5: Argument does not have asserted type `str`']
+Line 85: Unexpected errors ['exceptions_context_managers.py:85:5: Argument does not have asserted type `str`']
+"""
+output = """
+error[type-assertion-failure] exceptions_context_managers.py:50:5: Argument does not have asserted type `int | str`
+error[type-assertion-failure] exceptions_context_managers.py:57:5: Argument does not have asserted type `int | str`
+error[type-assertion-failure] exceptions_context_managers.py:64:5: Argument does not have asserted type `str`
+error[type-assertion-failure] exceptions_context_managers.py:71:5: Argument does not have asserted type `str`
+error[type-assertion-failure] exceptions_context_managers.py:78:5: Argument does not have asserted type `str`
+error[type-assertion-failure] exceptions_context_managers.py:85:5: Argument does not have asserted type `str`
+"""

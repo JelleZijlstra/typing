@@ -1,0 +1,12 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 10: Expected 1 errors
+Line 15: Expected 1 errors
+Line 23: Expected 1 errors
+Line 31: Expected 1 errors
+Line 35: Expected 1 errors
+Line 39: Expected 1 errors
+"""
+output = """
+error[invalid-return-type] generics_paramspec_basic.py:27:38: Function can implicitly return `None`, which is not assignable to return type `int`
+"""

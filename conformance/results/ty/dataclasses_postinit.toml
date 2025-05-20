@@ -1,0 +1,12 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 19: Expected 1 errors
+Line 28: Expected 1 errors
+Line 29: Expected 1 errors
+Line 36: Expected 1 errors
+Line 23: Unexpected errors ['dataclasses_postinit.py:23:17: Argument is incorrect: Expected `InitVar[int]`, found `Literal[3]`', 'dataclasses_postinit.py:23:23: Argument is incorrect: Expected `InitVar[str]`, found `Literal[""]`']
+"""
+output = """
+error[invalid-argument-type] dataclasses_postinit.py:23:17: Argument is incorrect: Expected `InitVar[int]`, found `Literal[3]`
+error[invalid-argument-type] dataclasses_postinit.py:23:23: Argument is incorrect: Expected `InitVar[str]`, found `Literal[""]`
+"""

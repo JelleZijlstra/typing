@@ -1,0 +1,11 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 55: Expected 1 errors
+Line 61: Expected 1 errors
+Line 88: Expected 1 errors
+Line 92: Expected 1 errors
+Line 96: Expected 1 errors
+"""
+output = """
+error[invalid-argument-type] protocols_runtime_checkable.py:23:8: Class `Proto1` cannot be used as the second argument to `isinstance`: This call will raise `TypeError` at runtime
+"""

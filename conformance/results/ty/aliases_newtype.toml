@@ -1,0 +1,20 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 11: Expected 1 errors
+Line 12: Expected 1 errors
+Line 20: Expected 1 errors
+Line 32: Expected 1 errors
+Line 38: Expected 1 errors
+Line 44: Expected 1 errors
+Line 47: Expected 1 errors
+Line 49: Expected 1 errors
+Line 51: Expected 1 errors
+Line 58: Expected 1 errors
+Line 62: Expected 1 errors
+Line 15: Unexpected errors ['aliases_newtype.py:15:1: Argument does not have asserted type `int`']
+"""
+output = """
+error[type-assertion-failure] aliases_newtype.py:15:1: Argument does not have asserted type `int`
+error[invalid-base] aliases_newtype.py:23:21: Invalid class base with type `NewType` (all bases must be a class, `Any`, `Unknown` or `Todo`)
+error[too-many-positional-arguments] aliases_newtype.py:60:43: Too many positional arguments to bound method `__init__`: expected 3, got 4
+"""

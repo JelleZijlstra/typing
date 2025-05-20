@@ -1,0 +1,43 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 109: Expected 1 errors
+Line 110: Expected 1 errors
+Line 121: Expected 1 errors
+Line 122: Expected 1 errors
+Line 127: Expected 1 errors
+Line 163: Expected 1 errors
+Line 16: Unexpected errors ['generics_typevartuple_specialization.py:16:13: `@Todo` is not a valid argument to `typing.Generic`']
+Line 46: Unexpected errors ['generics_typevartuple_specialization.py:46:5: Argument does not have asserted type `tuple[int, int | float, bool]`']
+Line 47: Unexpected errors ['generics_typevartuple_specialization.py:47:5: Argument does not have asserted type `tuple[str, @Todo]`']
+Line 51: Unexpected errors ['generics_typevartuple_specialization.py:51:5: Argument does not have asserted type `tuple[int]`']
+Line 52: Unexpected errors ['generics_typevartuple_specialization.py:52:5: Argument does not have asserted type `tuple[str, @Todo]`']
+Line 59: Unexpected errors ['generics_typevartuple_specialization.py:59:14: `@Todo` is not a valid argument to `typing.Generic`']
+Line 93: Unexpected errors ['generics_typevartuple_specialization.py:93:5: Argument does not have asserted type `tuple[str, int]`']
+Line 94: Unexpected errors ['generics_typevartuple_specialization.py:94:5: Argument does not have asserted type `tuple[int | float]`']
+Line 95: Unexpected errors ['generics_typevartuple_specialization.py:95:5: Argument does not have asserted type `@Todo`']
+Line 130: Unexpected errors ['generics_typevartuple_specialization.py:130:35: Function can implicitly return `None`, which is not assignable to return type `tuple[@Todo, T1, T2]`']
+Line 135: Unexpected errors ['generics_typevartuple_specialization.py:135:5: Argument does not have asserted type `tuple[tuple[()], str, bool]`']
+Line 136: Unexpected errors ['generics_typevartuple_specialization.py:136:5: Argument does not have asserted type `tuple[tuple[str], bool, int | float]`']
+Line 137: Unexpected errors ['generics_typevartuple_specialization.py:137:5: Argument does not have asserted type `tuple[tuple[str, bool], int | float, int]`']
+Line 143: Unexpected errors ['generics_typevartuple_specialization.py:143:39: Function can implicitly return `None`, which is not assignable to return type `tuple[@Todo, T1, T2, T3]`']
+Line 148: Unexpected errors ['generics_typevartuple_specialization.py:148:5: Argument does not have asserted type `tuple[tuple[()], str, bool, int | float]`']
+Line 149: Unexpected errors ['generics_typevartuple_specialization.py:149:5: Argument does not have asserted type `tuple[tuple[bool], str, int | float, int]`']
+"""
+output = """
+error[invalid-argument-type] generics_typevartuple_specialization.py:16:13: `@Todo` is not a valid argument to `typing.Generic`
+error[type-assertion-failure] generics_typevartuple_specialization.py:46:5: Argument does not have asserted type `tuple[int, int | float, bool]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:47:5: Argument does not have asserted type `tuple[str, @Todo]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:51:5: Argument does not have asserted type `tuple[int]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:52:5: Argument does not have asserted type `tuple[str, @Todo]`
+error[invalid-argument-type] generics_typevartuple_specialization.py:59:14: `@Todo` is not a valid argument to `typing.Generic`
+error[type-assertion-failure] generics_typevartuple_specialization.py:93:5: Argument does not have asserted type `tuple[str, int]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:94:5: Argument does not have asserted type `tuple[int | float]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:95:5: Argument does not have asserted type `@Todo`
+error[invalid-return-type] generics_typevartuple_specialization.py:130:35: Function can implicitly return `None`, which is not assignable to return type `tuple[@Todo, T1, T2]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:135:5: Argument does not have asserted type `tuple[tuple[()], str, bool]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:136:5: Argument does not have asserted type `tuple[tuple[str], bool, int | float]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:137:5: Argument does not have asserted type `tuple[tuple[str, bool], int | float, int]`
+error[invalid-return-type] generics_typevartuple_specialization.py:143:39: Function can implicitly return `None`, which is not assignable to return type `tuple[@Todo, T1, T2, T3]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:148:5: Argument does not have asserted type `tuple[tuple[()], str, bool, int | float]`
+error[type-assertion-failure] generics_typevartuple_specialization.py:149:5: Argument does not have asserted type `tuple[tuple[bool], str, int | float, int]`
+"""

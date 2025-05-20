@@ -1,0 +1,27 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 60: Unexpected errors ['literals_interactions.py:60:49: Function can implicitly return `None`, which is not assignable to return type `Matrix[A, B]`']
+Line 63: Unexpected errors ['literals_interactions.py:63:52: Function can implicitly return `None`, which is not assignable to return type `Matrix[A, C]`']
+Line 66: Unexpected errors ['literals_interactions.py:66:28: Function can implicitly return `None`, which is not assignable to return type `Matrix[B, A]`']
+Line 87: Unexpected errors ['literals_interactions.py:87:9: Argument does not have asserted type `@Todo`']
+Line 89: Unexpected errors ['literals_interactions.py:89:9: Argument does not have asserted type `@Todo`']
+Line 91: Unexpected errors ['literals_interactions.py:91:9: Argument does not have asserted type `@Todo`']
+Line 93: Unexpected errors ['literals_interactions.py:93:9: Argument does not have asserted type `str`']
+Line 106: Unexpected errors ['literals_interactions.py:106:35: Argument to function `expects_bad_status` is incorrect: Expected `Literal["MALFORMED", "ABORTED"]`, found `str`']
+Line 109: Unexpected errors ['literals_interactions.py:109:32: Argument to function `expects_pending_status` is incorrect: Expected `Literal["PENDING"]`, found `str`']
+"""
+output = """
+error[index-out-of-bounds] literals_interactions.py:15:5: Index 5 is out of bounds for tuple `tuple[int, str, list[bool]]` with length 3
+error[index-out-of-bounds] literals_interactions.py:16:5: Index -5 is out of bounds for tuple `tuple[int, str, list[bool]]` with length 3
+error[index-out-of-bounds] literals_interactions.py:17:5: Index 4 is out of bounds for tuple `tuple[int, str, list[bool]]` with length 3
+error[index-out-of-bounds] literals_interactions.py:18:5: Index -4 is out of bounds for tuple `tuple[int, str, list[bool]]` with length 3
+error[invalid-return-type] literals_interactions.py:60:49: Function can implicitly return `None`, which is not assignable to return type `Matrix[A, B]`
+error[invalid-return-type] literals_interactions.py:63:52: Function can implicitly return `None`, which is not assignable to return type `Matrix[A, C]`
+error[invalid-return-type] literals_interactions.py:66:28: Function can implicitly return `None`, which is not assignable to return type `Matrix[B, A]`
+error[type-assertion-failure] literals_interactions.py:87:9: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] literals_interactions.py:89:9: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] literals_interactions.py:91:9: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] literals_interactions.py:93:9: Argument does not have asserted type `str`
+error[invalid-argument-type] literals_interactions.py:106:35: Argument to function `expects_bad_status` is incorrect: Expected `Literal["MALFORMED", "ABORTED"]`, found `str`
+error[invalid-argument-type] literals_interactions.py:109:32: Argument to function `expects_pending_status` is incorrect: Expected `Literal["PENDING"]`, found `str`
+"""

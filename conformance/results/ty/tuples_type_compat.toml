@@ -1,0 +1,51 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 29: Expected 1 errors
+Line 32: Expected 1 errors
+Line 157: Expected 1 errors
+Line 162: Expected 1 errors
+Line 163: Expected 1 errors
+Line 169: Expected 1 errors
+Line 170: Expected 1 errors
+Line 175: Expected 1 errors
+Line 176: Expected 1 errors
+Line 181: Expected 1 errors
+Line 184: Expected 1 errors
+Line 188: Expected 1 errors
+Lines 126, 127: Expected exactly one error (tag 'func7_1')
+Lines 129, 130: Expected exactly one error (tag 'func7_2')
+Line 46: Unexpected errors ['tuples_type_compat.py:46:5: Object of type `tuple[Any, ...]` is not assignable to `tuple[int | float, int | float]`']
+Line 59: Unexpected errors ['tuples_type_compat.py:59:5: Object of type `tuple[Unknown, ...]` is not assignable to `tuple[int, int]`']
+Line 60: Unexpected errors ['tuples_type_compat.py:60:5: Object of type `tuple[Unknown, ...]` is not assignable to `tuple[int, int]`']
+Line 61: Unexpected errors ['tuples_type_compat.py:61:5: Object of type `tuple[Any, ...]` is not assignable to `tuple[int, int]`']
+Line 126: Unexpected errors ['tuples_type_compat.py:126:13: Argument does not have asserted type `tuple[int | str, str]`']
+Line 127: Unexpected errors ['tuples_type_compat.py:127:13: Argument does not have asserted type `@Todo`']
+Line 129: Unexpected errors ['tuples_type_compat.py:129:13: Argument does not have asserted type `tuple[int | str, int]`']
+Line 130: Unexpected errors ['tuples_type_compat.py:130:13: Argument does not have asserted type `@Todo`']
+Line 149: Unexpected errors ['tuples_type_compat.py:149:5: Argument does not have asserted type `Sequence[int | float | complex | list[int]]`']
+Line 152: Unexpected errors ['tuples_type_compat.py:152:5: Argument does not have asserted type `Sequence[int | str]`']
+Line 153: Unexpected errors ['tuples_type_compat.py:153:5: Argument does not have asserted type `Sequence[Never]`']
+"""
+output = """
+error[invalid-assignment] tuples_type_compat.py:15:5: Object of type `tuple[int | float, int | float | complex]` is not assignable to `tuple[int, int]`
+error[invalid-assignment] tuples_type_compat.py:33:5: Object of type `tuple[int, ...]` is not assignable to `tuple[int]`
+error[invalid-assignment] tuples_type_compat.py:43:5: Object of type `tuple[int, ...]` is not assignable to `tuple[int]`
+error[invalid-assignment] tuples_type_compat.py:46:5: Object of type `tuple[Any, ...]` is not assignable to `tuple[int | float, int | float]`
+error[invalid-assignment] tuples_type_compat.py:59:5: Object of type `tuple[Unknown, ...]` is not assignable to `tuple[int, int]`
+error[invalid-assignment] tuples_type_compat.py:60:5: Object of type `tuple[Unknown, ...]` is not assignable to `tuple[int, int]`
+error[invalid-assignment] tuples_type_compat.py:61:5: Object of type `tuple[Any, ...]` is not assignable to `tuple[int, int]`
+error[invalid-assignment] tuples_type_compat.py:62:5: Object of type `tuple[int, ...]` is not assignable to `tuple[int, int]`
+error[type-assertion-failure] tuples_type_compat.py:75:9: Argument does not have asserted type `tuple[int]`
+error[type-assertion-failure] tuples_type_compat.py:80:9: Argument does not have asserted type `tuple[str, str] | tuple[int, int]`
+error[type-assertion-failure] tuples_type_compat.py:85:9: Argument does not have asserted type `tuple[int, str, int]`
+error[type-assertion-failure] tuples_type_compat.py:101:13: Argument does not have asserted type `tuple[int]`
+error[type-assertion-failure] tuples_type_compat.py:106:13: Argument does not have asserted type `tuple[str, str] | tuple[int, int]`
+error[type-assertion-failure] tuples_type_compat.py:111:13: Argument does not have asserted type `tuple[int, str, int]`
+error[type-assertion-failure] tuples_type_compat.py:126:13: Argument does not have asserted type `tuple[int | str, str]`
+error[type-assertion-failure] tuples_type_compat.py:127:13: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] tuples_type_compat.py:129:13: Argument does not have asserted type `tuple[int | str, int]`
+error[type-assertion-failure] tuples_type_compat.py:130:13: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] tuples_type_compat.py:149:5: Argument does not have asserted type `Sequence[int | float | complex | list[int]]`
+error[type-assertion-failure] tuples_type_compat.py:152:5: Argument does not have asserted type `Sequence[int | str]`
+error[type-assertion-failure] tuples_type_compat.py:153:5: Argument does not have asserted type `Sequence[Never]`
+"""

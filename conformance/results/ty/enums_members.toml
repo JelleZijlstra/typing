@@ -1,0 +1,24 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 50: Expected 1 errors
+Line 82: Expected 1 errors
+Line 83: Expected 1 errors
+Line 84: Expected 1 errors
+Line 85: Expected 1 errors
+Line 116: Expected 1 errors
+Line 129: Expected 1 errors
+Line 27: Unexpected errors ['enums_members.py:27:1: Argument does not have asserted type `str`']
+Line 28: Unexpected errors ['enums_members.py:28:1: Argument does not have asserted type `str`']
+Line 35: Unexpected errors ['enums_members.py:35:1: Argument does not have asserted type `str`']
+Line 36: Unexpected errors ['enums_members.py:36:1: Argument does not have asserted type `str`']
+Line 128: Unexpected errors ['enums_members.py:128:21: Revealed type: `@Todo`']
+"""
+output = """
+error[type-assertion-failure] enums_members.py:27:1: Argument does not have asserted type `str`
+error[type-assertion-failure] enums_members.py:28:1: Argument does not have asserted type `str`
+error[type-assertion-failure] enums_members.py:35:1: Argument does not have asserted type `str`
+error[type-assertion-failure] enums_members.py:36:1: Argument does not have asserted type `str`
+info[revealed-type] enums_members.py:128:21: Revealed type: `@Todo`
+error[type-assertion-failure] enums_members.py:146:1: Argument does not have asserted type `int`
+error[type-assertion-failure] enums_members.py:147:1: Argument does not have asserted type `int`
+"""

@@ -1,0 +1,27 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 59: Expected 1 errors
+Line 91: Expected 1 errors
+Line 93: Expected 1 errors
+Line 159: Expected 1 errors
+Line 172: Expected 1 errors
+Line 187: Expected 1 errors
+Line 189: Expected 1 errors
+Line 114: Unexpected errors ['callables_annotation.py:114:14: `ParamSpec` is not a valid argument to subscripted `typing.Protocol`']
+"""
+output = """
+error[missing-argument] callables_annotation.py:25:5: No argument provided for required parameter 2
+error[invalid-argument-type] callables_annotation.py:26:11: Argument is incorrect: Expected `str`, found `Literal[2]`
+error[too-many-positional-arguments] callables_annotation.py:27:15: Too many positional arguments: expected 2, got 3
+error[missing-argument] callables_annotation.py:29:5: No arguments provided for required parameters 1, 2
+error[unknown-argument] callables_annotation.py:29:8: Argument `a` does not match any known parameter
+error[unknown-argument] callables_annotation.py:29:13: Argument `b` does not match any known parameter
+error[too-many-positional-arguments] callables_annotation.py:35:8: Too many positional arguments: expected 0, got 1
+error[invalid-type-form] callables_annotation.py:55:5: Special form `typing.Callable` expected exactly two arguments (parameter types and return type)
+error[invalid-type-form] callables_annotation.py:55:14: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] callables_annotation.py:56:14: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] callables_annotation.py:57:18: List literals are not allowed in this context in a type expression
+error[invalid-type-form] callables_annotation.py:58:5: Special form `typing.Callable` expected exactly two arguments (parameter types and return type)
+error[invalid-type-form] callables_annotation.py:58:14: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-argument-type] callables_annotation.py:114:14: `ParamSpec` is not a valid argument to subscripted `typing.Protocol`
+"""

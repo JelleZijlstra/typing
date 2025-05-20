@@ -1,0 +1,13 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 71: Expected 1 errors
+Line 97: Expected 1 errors
+Lines 89, 90: Expected error (tag 'Customer3Subclass')
+Line 77: Unexpected errors ['dataclasses_transform_func.py:77:36: Function can implicitly return `None`, which is not assignable to return type `T`']
+"""
+output = """
+error[invalid-assignment] dataclasses_transform_func.py:57:1: Object of type `Literal[3]` is not assignable to attribute `name` of type `str`
+error[unsupported-operator] dataclasses_transform_func.py:61:6: Operator `<` is not supported for types `Customer1` and `Customer1`
+error[unknown-argument] dataclasses_transform_func.py:65:36: Argument `salary` does not match any known parameter
+error[invalid-return-type] dataclasses_transform_func.py:77:36: Function can implicitly return `None`, which is not assignable to return type `T`
+"""

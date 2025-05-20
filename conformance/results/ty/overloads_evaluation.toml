@@ -1,0 +1,43 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 62: Unexpected errors ['overloads_evaluation.py:62:35: Function can implicitly return `None`, which is not assignable to return type `int | float`']
+Line 105: Unexpected errors ['overloads_evaluation.py:105:12: No overload of function `example2` matches arguments']
+Line 106: Unexpected errors ['overloads_evaluation.py:106:5: Argument does not have asserted type `int | str`']
+Line 134: Unexpected errors ['overloads_evaluation.py:134:12: No overload of function `expand_bool` matches arguments']
+Line 135: Unexpected errors ['overloads_evaluation.py:135:5: Argument does not have asserted type `Literal[0, 1]`']
+Line 161: Unexpected errors ['overloads_evaluation.py:161:5: Argument does not have asserted type `Literal[0, 1]`']
+Line 180: Unexpected errors ['overloads_evaluation.py:180:12: No overload of function `expand_type_union` matches arguments']
+Line 181: Unexpected errors ['overloads_evaluation.py:181:5: Argument does not have asserted type `int | str`']
+Line 204: Unexpected errors ['overloads_evaluation.py:204:12: No overload of function `expand_tuple` matches arguments']
+Line 205: Unexpected errors ['overloads_evaluation.py:205:5: Argument does not have asserted type `int | str`']
+Line 233: Unexpected errors ['overloads_evaluation.py:233:12: No overload of function `variadic` matches arguments']
+Line 234: Unexpected errors ['overloads_evaluation.py:234:5: Argument does not have asserted type `int`']
+Line 264: Unexpected errors ['overloads_evaluation.py:264:5: Argument does not have asserted type `Any`']
+Line 280: Unexpected errors ['overloads_evaluation.py:280:5: Argument does not have asserted type `Any`']
+Line 291: Unexpected errors ['overloads_evaluation.py:291:33: Function can implicitly return `None`, which is not assignable to return type `T`']
+Line 322: Unexpected errors ['overloads_evaluation.py:322:5: Argument does not have asserted type `list[int]`']
+Line 345: Unexpected errors ['overloads_evaluation.py:345:5: Argument does not have asserted type `Any`']
+"""
+output = """
+error[no-matching-overload] overloads_evaluation.py:38:1: No overload of function `example1_1` matches arguments
+error[no-matching-overload] overloads_evaluation.py:46:1: No overload of function `example1_1` matches arguments
+error[no-matching-overload] overloads_evaluation.py:51:1: No overload of function `example1_1` matches arguments
+error[invalid-return-type] overloads_evaluation.py:62:35: Function can implicitly return `None`, which is not assignable to return type `int | float`
+error[no-matching-overload] overloads_evaluation.py:105:12: No overload of function `example2` matches arguments
+error[type-assertion-failure] overloads_evaluation.py:106:5: Argument does not have asserted type `int | str`
+error[no-matching-overload] overloads_evaluation.py:115:5: No overload of function `example2` matches arguments
+error[no-matching-overload] overloads_evaluation.py:134:12: No overload of function `expand_bool` matches arguments
+error[type-assertion-failure] overloads_evaluation.py:135:5: Argument does not have asserted type `Literal[0, 1]`
+error[type-assertion-failure] overloads_evaluation.py:161:5: Argument does not have asserted type `Literal[0, 1]`
+error[no-matching-overload] overloads_evaluation.py:180:12: No overload of function `expand_type_union` matches arguments
+error[type-assertion-failure] overloads_evaluation.py:181:5: Argument does not have asserted type `int | str`
+error[no-matching-overload] overloads_evaluation.py:204:12: No overload of function `expand_tuple` matches arguments
+error[type-assertion-failure] overloads_evaluation.py:205:5: Argument does not have asserted type `int | str`
+error[no-matching-overload] overloads_evaluation.py:233:12: No overload of function `variadic` matches arguments
+error[type-assertion-failure] overloads_evaluation.py:234:5: Argument does not have asserted type `int`
+error[type-assertion-failure] overloads_evaluation.py:264:5: Argument does not have asserted type `Any`
+error[type-assertion-failure] overloads_evaluation.py:280:5: Argument does not have asserted type `Any`
+error[invalid-return-type] overloads_evaluation.py:291:33: Function can implicitly return `None`, which is not assignable to return type `T`
+error[type-assertion-failure] overloads_evaluation.py:322:5: Argument does not have asserted type `list[int]`
+error[type-assertion-failure] overloads_evaluation.py:345:5: Argument does not have asserted type `Any`
+"""

@@ -1,0 +1,75 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 26: Expected 1 errors
+Line 27: Expected 1 errors
+Line 61: Expected 1 errors
+Line 98: Expected 1 errors
+Line 108: Expected 1 errors
+Line 120: Expected 1 errors
+Line 127: Expected 1 errors
+Line 132: Expected 1 errors
+Line 137: Expected 1 errors
+Line 13: Unexpected errors ['generics_paramspec_semantics.py:13:44: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`', 'generics_paramspec_semantics.py:13:56: Function can implicitly return `None`, which is not assignable to return type `(...) -> Unknown`', 'generics_paramspec_semantics.py:13:65: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 17: Unexpected errors ['generics_paramspec_semantics.py:17:40: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 22: Unexpected errors ['generics_paramspec_semantics.py:22:1: Argument does not have asserted type `(str, bool, /) -> str`']
+Line 25: Unexpected errors ['generics_paramspec_semantics.py:25:1: Argument does not have asserted type `str`']
+Line 30: Unexpected errors ['generics_paramspec_semantics.py:30:23: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`', 'generics_paramspec_semantics.py:30:44: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`', 'generics_paramspec_semantics.py:30:56: Function can implicitly return `None`, which is not assignable to return type `(...) -> Unknown`', 'generics_paramspec_semantics.py:30:65: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 34: Unexpected errors ['generics_paramspec_semantics.py:34:28: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 38: Unexpected errors ['generics_paramspec_semantics.py:38:28: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 43: Unexpected errors ['generics_paramspec_semantics.py:43:1: Argument does not have asserted type `bool`']
+Line 44: Unexpected errors ['generics_paramspec_semantics.py:44:1: Argument does not have asserted type `bool`']
+Line 53: Unexpected errors ['generics_paramspec_semantics.py:53:34: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 57: Unexpected errors ['generics_paramspec_semantics.py:57:34: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 67: Unexpected errors ['generics_paramspec_semantics.py:67:9: `ParamSpec` is not a valid argument to `typing.Generic`']
+Line 68: Unexpected errors ['generics_paramspec_semantics.py:68:17: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 71: Unexpected errors ['generics_paramspec_semantics.py:71:36: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 76: Unexpected errors ['generics_paramspec_semantics.py:76:30: Function can implicitly return `None`, which is not assignable to return type `str`']
+Line 82: Unexpected errors ['generics_paramspec_semantics.py:82:5: Argument does not have asserted type `@Todo`']
+Line 84: Unexpected errors ['generics_paramspec_semantics.py:84:5: Argument does not have asserted type `(int, /) -> str`']
+Line 87: Unexpected errors ['generics_paramspec_semantics.py:87:33: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 91: Unexpected errors ['generics_paramspec_semantics.py:91:21: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`', 'generics_paramspec_semantics.py:91:33: Function can implicitly return `None`, which is not assignable to return type `(...) -> bool`']
+Line 101: Unexpected errors ['generics_paramspec_semantics.py:101:54: Function can implicitly return `None`, which is not assignable to return type `(...) -> Unknown`', 'generics_paramspec_semantics.py:101:63: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
+Line 106: Unexpected errors ['generics_paramspec_semantics.py:106:1: Argument does not have asserted type `bool`']
+Line 107: Unexpected errors ['generics_paramspec_semantics.py:107:1: Argument does not have asserted type `bool`']
+Line 113: Unexpected errors ['generics_paramspec_semantics.py:113:6: Function can implicitly return `None`, which is not assignable to return type `(...) -> bool`']
+Line 128: Unexpected errors ['generics_paramspec_semantics.py:128:20: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 133: Unexpected errors ['generics_paramspec_semantics.py:133:23: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 138: Unexpected errors ['generics_paramspec_semantics.py:138:29: Function can implicitly return `None`, which is not assignable to return type `int`']
+Line 143: Unexpected errors ['generics_paramspec_semantics.py:143:25: Function can implicitly return `None`, which is not assignable to return type `int`']
+"""
+output = """
+error[invalid-type-form] generics_paramspec_semantics.py:13:44: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-return-type] generics_paramspec_semantics.py:13:56: Function can implicitly return `None`, which is not assignable to return type `(...) -> Unknown`
+error[invalid-type-form] generics_paramspec_semantics.py:13:65: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-return-type] generics_paramspec_semantics.py:17:40: Function can implicitly return `None`, which is not assignable to return type `int`
+error[type-assertion-failure] generics_paramspec_semantics.py:22:1: Argument does not have asserted type `(str, bool, /) -> str`
+error[type-assertion-failure] generics_paramspec_semantics.py:25:1: Argument does not have asserted type `str`
+error[invalid-type-form] generics_paramspec_semantics.py:30:23: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_semantics.py:30:44: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-return-type] generics_paramspec_semantics.py:30:56: Function can implicitly return `None`, which is not assignable to return type `(...) -> Unknown`
+error[invalid-type-form] generics_paramspec_semantics.py:30:65: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-return-type] generics_paramspec_semantics.py:34:28: Function can implicitly return `None`, which is not assignable to return type `int`
+error[invalid-return-type] generics_paramspec_semantics.py:38:28: Function can implicitly return `None`, which is not assignable to return type `int`
+error[type-assertion-failure] generics_paramspec_semantics.py:43:1: Argument does not have asserted type `bool`
+error[type-assertion-failure] generics_paramspec_semantics.py:44:1: Argument does not have asserted type `bool`
+error[invalid-return-type] generics_paramspec_semantics.py:53:34: Function can implicitly return `None`, which is not assignable to return type `int`
+error[invalid-return-type] generics_paramspec_semantics.py:57:34: Function can implicitly return `None`, which is not assignable to return type `int`
+error[invalid-argument-type] generics_paramspec_semantics.py:67:9: `ParamSpec` is not a valid argument to `typing.Generic`
+error[invalid-type-form] generics_paramspec_semantics.py:68:17: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-type-form] generics_paramspec_semantics.py:71:36: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-return-type] generics_paramspec_semantics.py:76:30: Function can implicitly return `None`, which is not assignable to return type `str`
+error[type-assertion-failure] generics_paramspec_semantics.py:82:5: Argument does not have asserted type `@Todo`
+error[type-assertion-failure] generics_paramspec_semantics.py:84:5: Argument does not have asserted type `(int, /) -> str`
+error[invalid-return-type] generics_paramspec_semantics.py:87:33: Function can implicitly return `None`, which is not assignable to return type `int`
+error[invalid-type-form] generics_paramspec_semantics.py:91:21: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-return-type] generics_paramspec_semantics.py:91:33: Function can implicitly return `None`, which is not assignable to return type `(...) -> bool`
+error[invalid-return-type] generics_paramspec_semantics.py:101:54: Function can implicitly return `None`, which is not assignable to return type `(...) -> Unknown`
+error[invalid-type-form] generics_paramspec_semantics.py:101:63: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[type-assertion-failure] generics_paramspec_semantics.py:106:1: Argument does not have asserted type `bool`
+error[type-assertion-failure] generics_paramspec_semantics.py:107:1: Argument does not have asserted type `bool`
+error[invalid-return-type] generics_paramspec_semantics.py:113:6: Function can implicitly return `None`, which is not assignable to return type `(...) -> bool`
+error[invalid-return-type] generics_paramspec_semantics.py:128:20: Function can implicitly return `None`, which is not assignable to return type `int`
+error[invalid-return-type] generics_paramspec_semantics.py:133:23: Function can implicitly return `None`, which is not assignable to return type `int`
+error[invalid-return-type] generics_paramspec_semantics.py:138:29: Function can implicitly return `None`, which is not assignable to return type `int`
+error[invalid-return-type] generics_paramspec_semantics.py:143:25: Function can implicitly return `None`, which is not assignable to return type `int`
+"""

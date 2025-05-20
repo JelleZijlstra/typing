@@ -1,0 +1,24 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 14: Expected 1 errors
+Line 92: Expected 1 errors
+Line 95: Expected 1 errors
+Line 98: Expected 1 errors
+Line 40: Unexpected errors ['generics_syntax_scoping.py:40:23: Function can implicitly return `None`, which is not assignable to return type `((...) -> R, /) -> (...) -> R`']
+Line 81: Unexpected errors ['generics_syntax_scoping.py:81:35: Function can implicitly return `None`, which is not assignable to return type `((...) -> R, /) -> (...) -> R`']
+Line 113: Unexpected errors ['generics_syntax_scoping.py:113:9: Argument does not have asserted type `str`']
+Line 116: Unexpected errors ['generics_syntax_scoping.py:116:13: Argument does not have asserted type `TypeVar`']
+Line 121: Unexpected errors ['generics_syntax_scoping.py:121:9: Argument does not have asserted type `int | float | complex`']
+Line 124: Unexpected errors ['generics_syntax_scoping.py:124:13: Argument does not have asserted type `int | float | complex`']
+"""
+output = """
+error[unresolved-reference] generics_syntax_scoping.py:18:26: Name `T` used when not defined
+error[unresolved-reference] generics_syntax_scoping.py:35:7: Name `T` used when not defined
+error[invalid-return-type] generics_syntax_scoping.py:40:23: Function can implicitly return `None`, which is not assignable to return type `((...) -> R, /) -> (...) -> R`
+error[unresolved-reference] generics_syntax_scoping.py:44:17: Name `T` used when not defined
+error[invalid-return-type] generics_syntax_scoping.py:81:35: Function can implicitly return `None`, which is not assignable to return type `((...) -> R, /) -> (...) -> R`
+error[type-assertion-failure] generics_syntax_scoping.py:113:9: Argument does not have asserted type `str`
+error[type-assertion-failure] generics_syntax_scoping.py:116:13: Argument does not have asserted type `TypeVar`
+error[type-assertion-failure] generics_syntax_scoping.py:121:9: Argument does not have asserted type `int | float | complex`
+error[type-assertion-failure] generics_syntax_scoping.py:124:13: Argument does not have asserted type `int | float | complex`
+"""

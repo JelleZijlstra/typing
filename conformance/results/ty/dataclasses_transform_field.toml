@@ -1,0 +1,9 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 64: Expected 1 errors
+Line 75: Expected 1 errors
+Line 49: Unexpected errors ['dataclasses_transform_field.py:49:43: Function can implicitly return `None`, which is not assignable to return type `(...) -> @Todo`']
+"""
+output = """
+error[invalid-return-type] dataclasses_transform_field.py:49:43: Function can implicitly return `None`, which is not assignable to return type `(...) -> @Todo`
+"""

@@ -1,0 +1,19 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 106: Expected 1 errors
+Line 98: Unexpected errors ['generics_self_usage.py:98:22: Function can implicitly return `None`, which is not assignable to return type `T`']
+"""
+output = """
+error[invalid-type-form] generics_self_usage.py:73:14: Variable of type `typing.Self` is not allowed in a type expression
+error[invalid-type-form] generics_self_usage.py:73:23: Variable of type `typing.Self` is not allowed in a type expression
+error[invalid-type-form] generics_self_usage.py:76:6: Variable of type `typing.Self` is not allowed in a type expression
+error[invalid-return-type] generics_self_usage.py:82:54: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[invalid-return-type] generics_self_usage.py:86:16: Return type does not match returned value: expected `Self`, found `Foo3`
+error[invalid-return-type] generics_self_usage.py:98:22: Function can implicitly return `None`, which is not assignable to return type `T`
+error[invalid-type-form] generics_self_usage.py:101:15: Variable of type `typing.Self` is not allowed in a type expression
+error[invalid-base] generics_self_usage.py:103:12: Invalid class base with type `typing.Self` (all bases must be a class, `Any`, `Unknown` or `Todo`)
+error[invalid-return-type] generics_self_usage.py:111:19: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[invalid-return-type] generics_self_usage.py:116:40: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[invalid-return-type] generics_self_usage.py:121:37: Function can implicitly return `None`, which is not assignable to return type `Self`
+error[invalid-return-type] generics_self_usage.py:125:37: Function can implicitly return `None`, which is not assignable to return type `list[Self]`
+"""

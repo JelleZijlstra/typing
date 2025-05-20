@@ -1,0 +1,24 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 45: Expected 1 errors
+Line 46: Expected 1 errors
+Line 54: Expected 1 errors
+Line 69: Expected 1 errors
+Line 70: Expected 1 errors
+Line 71: Expected 1 errors
+Line 73: Expected 1 errors
+Line 77: Expected 1 errors
+Line 78: Expected 1 errors
+Line 35: Unexpected errors ['classes_classvar.py:35:14: `ParamSpec` is not a valid argument to `typing.Generic`']
+"""
+output = """
+error[invalid-argument-type] classes_classvar.py:35:14: `ParamSpec` is not a valid argument to `typing.Generic`
+error[invalid-type-form] classes_classvar.py:38:11: Type qualifier `typing.ClassVar` expects exactly one type parameter
+error[invalid-type-form] classes_classvar.py:39:14: Int literals are not allowed in this context in a type expression
+error[unresolved-reference] classes_classvar.py:40:14: Name `var` used when not defined
+error[invalid-type-form] classes_classvar.py:47:29: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[invalid-assignment] classes_classvar.py:52:5: Object of type `dict[Unknown, Unknown]` is not assignable to `list[str]`
+error[invalid-type-form] classes_classvar.py:55:17: Type qualifier `typing.ClassVar` is not allowed in type expressions (only in annotation expressions)
+error[invalid-attribute-access] classes_classvar.py:111:1: Cannot assign to ClassVar `stats` from an instance of type `Starship`
+error[invalid-assignment] classes_classvar.py:140:1: Object of type `ProtoAImpl` is not assignable to `ProtoA`
+"""

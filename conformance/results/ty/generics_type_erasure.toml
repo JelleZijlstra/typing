@@ -1,0 +1,26 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 17: Unexpected errors ['generics_type_erasure.py:17:1: Argument does not have asserted type `Node[str]`']
+Line 18: Unexpected errors ['generics_type_erasure.py:18:1: Argument does not have asserted type `Node[int]`']
+Line 21: Unexpected errors ['generics_type_erasure.py:21:1: Argument does not have asserted type `int`']
+Line 28: Unexpected errors ['generics_type_erasure.py:28:1: Argument does not have asserted type `Node[int]`']
+Line 30: Unexpected errors ['generics_type_erasure.py:30:1: Argument does not have asserted type `Node[str]`']
+Line 47: Unexpected errors ['generics_type_erasure.py:47:1: Argument does not have asserted type `int`']
+Line 56: Unexpected errors ['generics_type_erasure.py:56:1: Argument does not have asserted type `bytes`']
+"""
+output = """
+error[type-assertion-failure] generics_type_erasure.py:17:1: Argument does not have asserted type `Node[str]`
+error[type-assertion-failure] generics_type_erasure.py:18:1: Argument does not have asserted type `Node[int]`
+error[type-assertion-failure] generics_type_erasure.py:21:1: Argument does not have asserted type `int`
+error[type-assertion-failure] generics_type_erasure.py:28:1: Argument does not have asserted type `Node[int]`
+error[type-assertion-failure] generics_type_erasure.py:30:1: Argument does not have asserted type `Node[str]`
+error[invalid-argument-type] generics_type_erasure.py:38:16: Argument to bound method `__init__` is incorrect: Expected `int | None`, found `Literal[""]`
+error[invalid-argument-type] generics_type_erasure.py:40:16: Argument to bound method `__init__` is incorrect: Expected `str | None`, found `Literal[0]`
+error[invalid-attribute-access] generics_type_erasure.py:42:1: Cannot assign to instance attribute `label` from the class object `<class 'Node[int]'>`
+error[unresolved-attribute] generics_type_erasure.py:43:1: Type `<class 'Node[int]'>` has no attribute `label`
+error[invalid-attribute-access] generics_type_erasure.py:44:1: Cannot assign to instance attribute `label` from the class object `<class 'Node'>`
+error[unresolved-attribute] generics_type_erasure.py:45:1: Attribute `label` can only be accessed on instances, not on the class object `<class 'Node'>` itself.
+error[unresolved-attribute] generics_type_erasure.py:46:1: Attribute `label` can only be accessed on instances, not on the class object `type[Node]` itself.
+error[type-assertion-failure] generics_type_erasure.py:47:1: Argument does not have asserted type `int`
+error[type-assertion-failure] generics_type_erasure.py:56:1: Argument does not have asserted type `bytes`
+"""

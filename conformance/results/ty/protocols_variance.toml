@@ -1,0 +1,16 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 21: Expected 1 errors
+Line 40: Expected 1 errors
+Line 56: Expected 1 errors
+Line 61: Expected 1 errors
+Line 66: Expected 1 errors
+Line 71: Expected 1 errors
+Line 104: Expected 1 errors
+Line 84: Unexpected errors ['protocols_variance.py:84:16: `ParamSpec` is not a valid argument to subscripted `typing.Protocol`']
+Line 85: Unexpected errors ['protocols_variance.py:85:62: Function can implicitly return `None`, which is not assignable to return type `R`']
+"""
+output = """
+error[invalid-argument-type] protocols_variance.py:84:16: `ParamSpec` is not a valid argument to subscripted `typing.Protocol`
+error[invalid-return-type] protocols_variance.py:85:62: Function can implicitly return `None`, which is not assignable to return type `R`
+"""

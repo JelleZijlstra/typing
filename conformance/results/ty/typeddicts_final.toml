@@ -1,0 +1,7 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 19: Unexpected errors ['typeddicts_final.py:19:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`']
+"""
+output = """
+error[invalid-assignment] typeddicts_final.py:19:1: Object of type `dict[Unknown, Unknown]` is not assignable to `Movie`
+"""

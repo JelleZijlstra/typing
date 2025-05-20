@@ -1,0 +1,19 @@
+conformance_automated = "Fail"
+errors_diff = """
+Line 29: Expected 1 errors
+Line 34: Expected 1 errors
+Line 58: Expected 1 errors
+Line 74: Expected 1 errors
+Line 104: Expected 1 errors
+Line 106: Expected 1 errors
+Line 107: Expected 1 errors
+Line 30: Unexpected errors ["protocols_class_objects.py:30:5: Argument to function `fun` is incorrect: Expected `type[Proto]`, found `<class 'Concrete'>`"]
+Line 35: Unexpected errors ["protocols_class_objects.py:35:1: Object of type `<class 'Concrete'>` is not assignable to `type[Proto]`"]
+Line 109: Unexpected errors ["protocols_class_objects.py:109:1: Object of type `<class 'ConcreteC3'>` is not assignable to `ProtoC2`"]
+"""
+output = """
+error[invalid-argument-type] protocols_class_objects.py:30:5: Argument to function `fun` is incorrect: Expected `type[Proto]`, found `<class 'Concrete'>`
+error[invalid-assignment] protocols_class_objects.py:35:1: Object of type `<class 'Concrete'>` is not assignable to `type[Proto]`
+error[invalid-assignment] protocols_class_objects.py:108:1: Object of type `<class 'ConcreteC3'>` is not assignable to `ProtoC1`
+error[invalid-assignment] protocols_class_objects.py:109:1: Object of type `<class 'ConcreteC3'>` is not assignable to `ProtoC2`
+"""

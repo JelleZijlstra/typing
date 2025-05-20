@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import os
 import re
+import subprocess
 from pytype import config as pytype_config
 from pytype import io as pytype_io
 from pytype import analyze as pytype_analyze
@@ -384,7 +385,65 @@ class PytypeTypeChecker(TypeChecker):
         return line_to_errors
 
 
+class PycroscopeTypeChecker(TypeChecker):
+    @property
+    def name(self) -> str:
+        return "pycrosscope"
+
+    def install(self) -> bool:
+        run(
+            [sys.executable, "-m", "pip", "install", "/Users/jelle/py/pycroscope"],
+            check=True,
+        )
+        return True
+
+    def get_version(self) -> str:
+        command = [
+            sys.executable,
+            "-c",
+            "import importlib.metadata; print(importlib.metadata.version('pycroscope'))",
+        ]
+        return subprocess.check_output(command, text=True).strip()
+
+    def run_tests(self, test_files: Sequence[str]) -> dict[str, str]:
+        lines = []
+        for file in test_files:
+            command = [
+                sys.executable,
+                "-m",
+                "pycroscope",
+                "--output-format",
+                "concise",
+                file,
+            ]
+            print("running on", file)
+            proc = run(command, stdout=PIPE, text=True, encoding="utf-8")
+            lines += proc.stdout.split("\n")
+
+        # Add results to a dictionary keyed by the file name.
+        results_dict: dict[str, list[str]] = {}
+        for line in lines:
+            file_name = line.split(":")[0].strip()
+            results_dict.setdefault(file_name, []).append(line + "\n")
+
+        return {
+            filename: "".join(lines)
+            for filename, lines in results_dict.items()
+        }
+
+    def parse_errors(self, output: Sequence[str]) -> dict[int, list[str]]:
+        # conformance/src/type_checker.py:367:42: object has no attribute '_err' [undefined_attribute]
+        line_to_errors: dict[int, list[str]] = {}
+        for line in output:
+            if line.count(":") < 3:
+                continue
+            _, lineno, _, _ = line.split(":", maxsplit=3)
+            line_to_errors.setdefault(int(lineno), []).append(line)
+        return line_to_errors
+
+
 TYPE_CHECKERS: Sequence[TypeChecker] = (
+    PycroscopeTypeChecker(),
     MypyTypeChecker(),
     PyrightTypeChecker(),
     *([] if os.name == "nt" else [PyreTypeChecker()]),

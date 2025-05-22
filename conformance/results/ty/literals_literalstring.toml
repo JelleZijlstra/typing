@@ -5,6 +5,7 @@ Line 53: Unexpected errors ['literals_literalstring.py:53:5: Argument does not h
 Line 63: Unexpected errors ['literals_literalstring.py:63:5: Argument does not have asserted type `LiteralString`']
 Line 68: Unexpected errors ['literals_literalstring.py:68:5: Argument does not have asserted type `str`']
 Line 79: Unexpected errors ['literals_literalstring.py:79:21: Function can implicitly return `None`, which is not assignable to return type `bool`']
+Line 130: Unexpected errors ['literals_literalstring.py:130:5: Object of type `Container[str]` is not assignable to `Container[LiteralString]`']
 Line 167: Unexpected errors ['literals_literalstring.py:167:1: Argument does not have asserted type `A`']
 """
 output = """
@@ -20,6 +21,7 @@ error[invalid-assignment] literals_literalstring.py:74:5: Object of type `Litera
 error[invalid-assignment] literals_literalstring.py:75:5: Object of type `Literal[b"test"]` is not assignable to `LiteralString`
 error[invalid-return-type] literals_literalstring.py:79:21: Function can implicitly return `None`, which is not assignable to return type `bool`
 error[invalid-argument-type] literals_literalstring.py:120:22: Argument to function `literal_identity` is incorrect: Argument type `str` does not satisfy upper bound of type variable `TLiteral`
+error[invalid-assignment] literals_literalstring.py:130:5: Object of type `Container[str]` is not assignable to `Container[LiteralString]`
 error[invalid-argument-type] literals_literalstring.py:134:51: Argument to bound method `__init__` is incorrect: Argument type `str` does not satisfy upper bound of type variable `T`
 error[type-assertion-failure] literals_literalstring.py:167:1: Argument does not have asserted type `A`
 error[invalid-assignment] literals_literalstring.py:171:5: Object of type `list[LiteralString]` is not assignable to `list[str]`

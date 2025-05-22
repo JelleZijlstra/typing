@@ -7,21 +7,23 @@ Line 45: Expected 1 errors
 Line 46: Expected 1 errors
 Line 47: Expected 1 errors
 Line 48: Expected 1 errors
-Line 52: Expected 1 errors
-Line 53: Expected 1 errors
 Line 54: Expected 1 errors
-Line 55: Expected 1 errors
-Line 56: Expected 1 errors
-Line 57: Expected 1 errors
-Line 58: Expected 1 errors
-Line 59: Expected 1 errors
-Line 60: Expected 1 errors
-Line 61: Expected 1 errors
-Line 62: Expected 1 errors
-Line 63: Expected 1 errors
-Line 64: Expected 1 errors
+Line 22: Unexpected errors ['aliases_typealiastype.py:22:14: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`']
 """
 output = """
-error[unresolved-attribute] aliases_typealiastype.py:32:7: Type `TypeAliasType` has no attribute `other_attrib`
+error[invalid-type-form] aliases_typealiastype.py:22:14: The first argument to `Callable` must be either a list of types, ParamSpec, Concatenate, or `...`
+error[unresolved-attribute] aliases_typealiastype.py:32:7: Type `typing.TypeAliasType` has no attribute `other_attrib`
+error[invalid-type-form] aliases_typealiastype.py:52:40: Function calls are not allowed in type expressions
+error[invalid-type-form] aliases_typealiastype.py:53:40: List literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_typealiastype.py:55:42: List comprehensions are not allowed in type expressions
+error[invalid-type-form] aliases_typealiastype.py:56:42: Dict literals are not allowed in type expressions
+error[invalid-type-form] aliases_typealiastype.py:57:42: Function calls are not allowed in type expressions
+error[invalid-type-form] aliases_typealiastype.py:58:48: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_typealiastype.py:59:42: `if` expressions are not allowed in type expressions
+error[invalid-type-form] aliases_typealiastype.py:60:42: Variable of type `Literal[3]` is not allowed in a type expression
+error[invalid-type-form] aliases_typealiastype.py:61:42: Boolean literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_typealiastype.py:62:42: Int literals are not allowed in this context in a type expression
+error[invalid-type-form] aliases_typealiastype.py:63:42: Boolean operations are not allowed in type expressions
+error[invalid-type-form] aliases_typealiastype.py:64:42: F-strings are not allowed in type expressions
 error[unresolved-reference] aliases_typealiastype.py:66:47: Name `BadAlias21` used when not defined
 """

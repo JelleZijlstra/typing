@@ -6,13 +6,11 @@ Line 68: Expected 1 errors
 Line 74: Expected 1 errors
 Line 78: Expected 1 errors
 Line 23: Unexpected errors ['generics_defaults_referential.py:23:1: Argument does not have asserted type `@Todo`']
-Line 35: Unexpected errors ['generics_defaults_referential.py:35:1: Argument does not have asserted type `Foo[int, str]`']
 Line 94: Unexpected errors ['generics_defaults_referential.py:94:1: Argument does not have asserted type `@Todo`']
 Line 95: Unexpected errors ['generics_defaults_referential.py:95:1: Argument does not have asserted type `@Todo`']
 """
 output = """
 error[type-assertion-failure] generics_defaults_referential.py:23:1: Argument does not have asserted type `@Todo`
-error[type-assertion-failure] generics_defaults_referential.py:35:1: Argument does not have asserted type `Foo[int, str]`
 error[invalid-argument-type] generics_defaults_referential.py:36:13: Argument to bound method `__init__` is incorrect: Expected `int`, found `Literal[""]`
 error[invalid-argument-type] generics_defaults_referential.py:37:10: Argument to bound method `__init__` is incorrect: Expected `int`, found `Literal[""]`
 error[type-assertion-failure] generics_defaults_referential.py:94:1: Argument does not have asserted type `@Todo`

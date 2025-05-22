@@ -10,6 +10,7 @@ from dataclasses import dataclass
 class _Options:
     report_only: bool | None
     skip_timing: bool
+    type_checker: list[str] | None
 
 
 def parse_options(argv: list[str]) -> _Options:
@@ -24,6 +25,12 @@ def parse_options(argv: list[str]) -> _Options:
         "--skip-timing",
         action="store_true",
         help="do not update timing information in the output files",
+    )
+    selection_group = parser.add_argument_group("selection")
+    selection_group.add_argument(
+        "--type-checker",
+        action="append",
+        help="run only the specified type checker (can be used multiple times)",
     )
     ret = _Options(**vars(parser.parse_args(argv)))
     return ret

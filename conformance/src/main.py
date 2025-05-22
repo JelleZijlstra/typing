@@ -263,13 +263,16 @@ def main():
 
         # Run each test case with each type checker.
         for type_checker in TYPE_CHECKERS:
+            if options.type_checker and type_checker.name not in options.type_checker:
+                continue
             if not type_checker.install():
                 print(f"Skipping tests for {type_checker.name}")
             else:
                 run_tests(root_dir, type_checker, test_cases, skip_timing=options.skip_timing)
 
-    # Generate a summary report.
-    generate_summary(root_dir)
+    if not options.type_checker:
+        # Generate a summary report.
+        generate_summary(root_dir)
 
 
 if __name__ == "__main__":
